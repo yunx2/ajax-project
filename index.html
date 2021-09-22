@@ -20,7 +20,7 @@
   </header>
   <main>
     <!-- find view -->
-    <div class="row justify-center" data-view="find" id="find-view">
+    <div class="row justify-center hidden" data-view="find" id="find-view">
       <div class="column-full flex justify-center">
         <form id="form" class="search-form">
           <div class="creature-select">
@@ -49,6 +49,34 @@
          <p>Southern Hemisphere: <span id="south" class="text-pink"></span></p>
          <button class="btn btn-details" type="button">Details</button>
        </div>
+    </div>
+    <!-- details view -->
+    <div class="row">
+      <div class="column-full">
+        <div class="row justify-center">
+          <button id="details" class="btn btn-add" type="button">Add</button>
+          <h1 id="details-name" class="font-proza">Crucian Carp</h1>
+        </div>
+        <div class="row">
+          <p id="phrase" class="catch-phrase">"I caught a Crucian Carp! My skills are sharp!"</p>
+        </div>
+        <div class="row justify-center">
+          <img class="result-image" src="images/NH-Icon-cruciancarp.png">
+        </div>
+         <div class="row justify-center">
+           <div class="column-half direction-column left flex justify-start align-center">
+             <p><span class="font-bold">Location: </span><span id="location">pond</span></p>
+             <p><span class="font-bold">Price: </span><span id="price">160 Bells</span></p>
+             <p><span class="font-bold">Rarity: </span><span id="rarity">common</span></p>
+           </div>
+           <div class="column-half right direction-column flex justify-start align-center">
+             <h3 class="text-pink font-bold">Availability</h3>
+             <p><span class="font-bold">North: </span><span id="available-north">all year</span></p>
+             <p><span class="font-bold">South: </span><span id="available-south">all year</span></p>
+             <p><span class="font-bold">Time of Day: </span><span id="time-of-day">all day</span></p>
+           </div>
+        </div>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
