@@ -34,26 +34,22 @@
           <div class="">
             <input name="text-input" class="find-input beige-bg" type="text" placeholder="Enter creature name">
           </div>
-          <button id="find" class="btn-find" type="button">Find</button>
+          <button id="find" class="btn" type="button">Find</button>
         </form>
       </div>
-      <p id="message" class="hidden"></p>
+      <p id="message" class=""></p>
     </div>
     <!-- result view -->
     <div class="row justify-center hidden" data-view="result" id="result-view">
        <div class="column-full flex justify-center results">
-         <h1 id="result-name" class="font-proza">Results</h1>
+         <h1 id="result-name" class="font-proza"></h1>
          <img class="result-image">
          <p class="">Available to Catch Today</p>
          <p>Northern Hemisphere: <span id="north" class="text-pink"></span></p>
          <p>Southern Hemisphere: <span id="south" class="text-pink"></span></p>
+         <button class="btn btn-details" type="button">Details</button>
        </div>
-
-
     </div>
-
-
-
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

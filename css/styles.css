@@ -3,18 +3,19 @@ main {
 }
 
 .green-bg {
-  background-color: #B1E693;
+  background-color: #b1e693;
 }
 
 .text-brown {
-  color: #A0702D;
+  color: #a0702d;
 }
 
 .text-pink {
-  color: #EC9CD3;
+  color: #ec9cd3;
 }
+
 .beige-bg {
-  background-color: #FBF4E9;
+  background-color: #fbf4e9;
 }
 
 .flex {
@@ -24,14 +25,14 @@ main {
 .direction-column {
   flex-direction: column;
 }
+
 .justify-center {
   justify-content: center;
 }
 
 .page-heading-text {
-  color: #A0702D;
+  color: #a0702d;
   font-family: 'Proza Libre', serif;
-  text=align: center;
 }
 
 .font-proza {
@@ -45,7 +46,7 @@ main {
 .creature-select {
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid #A0702D;
+  border: 1px solid #a0702d;
   height: 70px;
   align-items: center;
   border-radius: 5px;
@@ -57,36 +58,36 @@ main {
   height: 70px;
   border-radius: 5px;
   margin-top: 20px;
-  border: 1px solid #A0702D;
+  border: 1px solid #a0702d;
   font-size: 20px;
   text-align: center;
 }
 
 .find-input::placeholder {
-  color: #A0702D;
+  color: #a0702d;
 }
 
-.btn-find {
+.btn {
   border-radius: 5px;
   margin-top: 20px;
-  border: 1px solid #A0702D;
-  background-color: #B1E693;
+  border: 1px solid #a0702d;
+  background-color: #b1e693;
   height: 50px;
   width: 70px;
   font-size: 18px;
-  color: #A0702D;
+  color: #a0702d;
+}
+
+.btn-details {
+  width: 80px;
 }
 
 select {
-  border: 1px solid #A0702D;
+  border: 1px solid #a0702d;
   font-size: 20px;
-  background-color: #FBF4E9;
-  color: #A0702D;
+  background-color: #fbf4e9;
+  color: #a0702d;
   border-radius: 5px;
-}
-
-#message {
-
 }
 
 .results {
@@ -97,8 +98,4 @@ select {
 .result-image {
   width: 300px;
   height: auto;
-}
-
-.results-heading {
-
 }
