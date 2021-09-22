@@ -6,6 +6,13 @@ main {
   background-color: #B1E693;
 }
 
+.text-brown {
+  color: #A0702D;
+}
+
+.text-pink {
+  color: #EC9CD3;
+}
 .beige-bg {
   background-color: #FBF4E9;
 }
@@ -79,5 +86,19 @@ select {
 }
 
 #message {
+
+}
+
+.results {
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-image {
+  width: 300px;
+  height: auto;
+}
+
+.results-heading {
 
 }
