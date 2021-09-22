@@ -6,15 +6,71 @@ const $north = document.getElementById('north');
 const $south = document.getElementById('south');
 const $resultName = document.getElementById('result-name');
 const $resultImg = document.querySelector('.result-image');
-const viewsList = document.querySelectorAll('[data-view]');
 const $details = document.getElementById('details');
 
+function convertMonth(str) {
+  const monthsObj = {
+    1: 'January',
+    2: 'Febrary',
+    3: 'March',
+    4: 'April',
+    5: 'May',
+    6: 'June',
+    7: 'July',
+    8: 'August',
+    9: 'September',
+    10: 'October',
+    11: 'November',
+    12: 'December'
+  };
+  const months = str.split('-');
+  const start = months[0]; const end = months[1];
+  return `${monthsObj[start]} - ${monthsObj[end]}`;
+}
+
+function fillDetails() {
+  const { name, availability, price, icon_uri } = data.response;
+  const phrase = data.response['catch-phrase'];
+  const creatureName = name['name-USen'];
+  document.getElementById('details-name').textContent = creatureName.toUpperCase();
+  const $detailsImg = document.getElementById('details-img');
+  $detailsImg.setAttribute('src', icon_uri);
+  $detailsImg.setAttribute('alt', creatureName);
+  document.getElementById('phrase').textContent = phrase;
+  if (availability.location) {
+    document.getElementById('location').textContent = availability.location;
+  } else {
+    document.getElementById('location').textContent = 'No data available.';
+  }
+
+  if (availability.rarity) {
+    document.getElementById('rarity').textContent = availability.rarity;
+  } else {
+    document.getElementById('rarity').textContent = 'No data available.';
+  }
+
+  document.getElementById('price').textContent = price;
+  if (availability.isAllYear) {
+    document.getElementById('available-north').textContent = 'All year';
+    document.getElementById('available-south').textContent = 'All year';
+  } else {
+    const monthsNorth = convertMonth(availability['month-northern']);
+    const monthsSouth = convertMonth(availability['month-southern']);
+    document.getElementById('available-north').textContent = monthsNorth;
+    document.getElementById('available-south').textContent = monthsSouth;
+  }
+  if (availability.isAllDay || availability.time === '') {
+    document.getElementById('time-of-day').textContent = 'All day';
+  } else {
+    document.getElementById('time-of-day').textContent = availability.time;
+  }
+}
 
 $details.addEventListener('click', e => {
-  console.log('view:', viewsList);
+  fillDetails();
+  // console.log('view:', viewsList);
   changeView('details');
-})
-
+});
 
 function checkAvailability(hemisphere) {
   if (data.response.availability.isAllYear) {
@@ -50,11 +106,9 @@ request.addEventListener('load', e => {
     const availableSouth = checkAvailability('southern');
     displayAvailable(availableNorth, $north);
     displayAvailable(availableSouth, $south);
-   changeView('result')
-    $resultView.scrollIntoView();
+    changeView('result');
   } else {
     // show not found message
-    $resultView.classList.add('hidden');
     $message.textContent = `No information about '${data.creature}'. Try again.`;
   }
   $form.reset();

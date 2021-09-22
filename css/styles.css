@@ -124,3 +124,17 @@ select {
   margin-right: 20px;
   width: 60px;
 }
+
+.bottom-row {
+  margin-bottom: 50px;
+}
+
+.img-bells {
+  width: auto;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.price-info {
+  align-items: baseline;
+}

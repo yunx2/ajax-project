@@ -1,10 +1,11 @@
 /* exported data */
-data = {
+const data = {
   view: 'find',
   response: null,
   creature: '',
   type: ''
 };
+const viewsList = document.querySelectorAll('[data-view]');
 
 function changeView(view) {
   data.view = view;
@@ -18,12 +19,10 @@ function changeView(view) {
     }
   }
 }
-
-
 // function handlePageLoad() {
 //   changeView('find');
 // }
 
 document.addEventListener('DOMContentLoaded', e => {
   changeView('find');
-})
+});
