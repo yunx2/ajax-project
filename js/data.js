@@ -1,4 +1,7 @@
 /* exported data */
 data = {
-  response: {}
+  view: 'find',
+  response: null,
+  creature: '',
+  type: ''
 };

@@ -19,7 +19,8 @@
     </div>
   </header>
   <main>
-    <div class="row">
+    <!-- find view -->
+    <div class="row justify-center" data-view="find" id="find-view">
       <div class="column-full flex justify-center">
         <form id="form" class="search-form">
           <div class="creature-select">
@@ -33,14 +34,12 @@
           <div class="">
             <input name="text-input" class="find-input beige-bg" type="text" placeholder="Enter creature name">
           </div>
-
           <button id="find" class="btn-find" type="button">Find</button>
         </form>
-
       </div>
-
+      <p id="message" class="hidden"></p>
     </div>
-
+    <!-- result view -->
 
   </main>
   <script src="js/data.js"></script>
