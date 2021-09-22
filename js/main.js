@@ -1,10 +1,15 @@
 // const baseUrl = 'https://acnhapi.com/v1/'
 const $find = document.getElementById('find');
-// const $input = document.getElementById('find-input');
+const $resultView = document.getElementById('result-view');
 // const $select = document.getElementById('select-creature')
 const $form = document.getElementById('form');
 // const $findView = document.getElementById('find-view')
 const $message = document.getElementById('message');
+const $north = document.getElementById('north');
+const $south = document.getElementById('south');
+const $resultName = document.getElementById('result-name');
+const $resultImg = document.querySelector('.result-image');
+
 function checkAvailability(hemisphere) {
   if (data.response.availability.isAllYear) {
     return true;
@@ -14,7 +19,14 @@ function checkAvailability(hemisphere) {
   const availability = data.response.availability[`month-array-${hemisphere}`];
   console.log('availability:', availability)
   return availability.includes(currentMonth);
+}
 
+function displayAvailable(availability, node) {
+  if (availability) {
+    node.textContent = 'YES';
+  } else {
+    node.textContent = 'NO';
+  }
 }
 
 const request = new XMLHttpRequest();
@@ -27,15 +39,24 @@ request.addEventListener('load', e => {
     // handle response
     // console.log('yes there\'s data')
     // console.log('response:', data.response)
+    $message.textContent = null;
+    const creatureName = data.response['file-name'];
+    $resultImg.setAttribute('src', data.response.image_uri);
+    $resultImg.setAttribute('alt', creatureName);
+    $resultName.textContent = creatureName.toUpperCase();
+
     const availableNorth = checkAvailability('northern');
     const availableSouth = checkAvailability('southern');
-    console.log('availableNorth:', availableNorth)
-    console.log('availableSouth:', availableSouth)
-
+    // console.log('availableNorth:', availableNorth)
+    // console.log('availableSouth:', availableSouth)
+    displayAvailable(availableNorth, $north);
+    displayAvailable(availableSouth, $south);
+    $resultView.classList.remove('hidden');
+    $resultView.scrollIntoView();
   } else {
     // show not found message
     $message.textContent = `No information about '${data.creature}'. Try again.`;
-    $message.classList.remove('hidden');
+    // $message.classList.remove('hidden');
   }
 });
 
