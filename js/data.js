@@ -5,3 +5,25 @@ data = {
   creature: '',
   type: ''
 };
+
+function changeView(view) {
+  data.view = view;
+  for (let i = 0; i < viewsList.length; i++) {
+    const $view = viewsList[i];
+    if ($view.getAttribute('data-view') === data.view) {
+      $view.classList.remove('hidden');
+      $view.scrollIntoView();
+    } else {
+      $view.classList.add('hidden');
+    }
+  }
+}
+
+
+// function handlePageLoad() {
+//   changeView('find');
+// }
+
+document.addEventListener('DOMContentLoaded', e => {
+  changeView('find');
+})

@@ -20,7 +20,7 @@
   </header>
   <main>
     <!-- find view -->
-    <div class="row justify-center hidden" data-view="find" id="find-view">
+    <div class="row justify-center" data-view="find" id="find-view">
       <div class="column-full flex justify-center">
         <form id="form" class="search-form">
           <div class="creature-select">
@@ -40,21 +40,21 @@
       <p id="message" class=""></p>
     </div>
     <!-- result view -->
-    <div class="row justify-center hidden" data-view="result" id="result-view">
+    <div class="row justify-center" data-view="result" id="result-view">
        <div class="column-full flex justify-center results">
          <h1 id="result-name" class="font-proza"></h1>
          <img class="result-image">
          <p class="">Available to Catch Today</p>
          <p>Northern Hemisphere: <span id="north" class="text-pink"></span></p>
          <p>Southern Hemisphere: <span id="south" class="text-pink"></span></p>
-         <button class="btn btn-details" type="button">Details</button>
+         <button id="details" class="btn btn-details" type="button">Details</button>
        </div>
     </div>
     <!-- details view -->
-    <div class="row">
+    <div class="row" data-view="details">
       <div class="column-full">
         <div class="row justify-center">
-          <button id="details" class="btn btn-add" type="button">Add</button>
+          <button id="add-details" class="btn btn-add" type="button">Add</button>
           <h1 id="details-name" class="font-proza">Crucian Carp</h1>
         </div>
         <div class="row">

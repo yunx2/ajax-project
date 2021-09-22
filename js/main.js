@@ -6,6 +6,15 @@ const $north = document.getElementById('north');
 const $south = document.getElementById('south');
 const $resultName = document.getElementById('result-name');
 const $resultImg = document.querySelector('.result-image');
+const viewsList = document.querySelectorAll('[data-view]');
+const $details = document.getElementById('details');
+
+
+$details.addEventListener('click', e => {
+  console.log('view:', viewsList);
+  changeView('details');
+})
+
 
 function checkAvailability(hemisphere) {
   if (data.response.availability.isAllYear) {
@@ -41,7 +50,7 @@ request.addEventListener('load', e => {
     const availableSouth = checkAvailability('southern');
     displayAvailable(availableNorth, $north);
     displayAvailable(availableSouth, $south);
-    $resultView.classList.remove('hidden');
+   changeView('result')
     $resultView.scrollIntoView();
   } else {
     // show not found message
