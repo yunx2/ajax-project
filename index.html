@@ -21,18 +21,20 @@
   <main>
     <div class="row">
       <div class="column-full flex justify-center">
-        <form class="search-form">
-          <div class="creature-radio">
-            <span>Creature Type: </span>
-            <label><input value="fish" name="creature-type" type="radio">Fish</label>
-            <label><input value="bug" name="creature-type" type="radio">Bug</label>
-            <label><input value="sea" name="creature-type" type="radio">Sea Creature</label>
+        <form id="form" class="search-form">
+          <div class="creature-select">
+            <select name="select" id="select-creature">
+              <option>Select Creature Type</option>
+              <option value="fish">Fish</option>
+              <option value="bugs">Bug</option>
+              <option value="sea">Sea Creature</option>
+            </select>
           </div>
           <div class="">
-            <input class="find-input beige-bg" type="text" placeholder="Enter creature name">
+            <input name="text-input" class="find-input beige-bg" type="text" placeholder="Enter creature name">
           </div>
 
-          <button class="btn-find" type="submit">Find</button>
+          <button id="find" class="btn-find" type="button">Find</button>
         </form>
 
       </div>

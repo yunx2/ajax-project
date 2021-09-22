@@ -1,1 +1,4 @@
 /* exported data */
+data = {
+  response: {}
+};

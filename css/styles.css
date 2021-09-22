@@ -35,7 +35,7 @@ main {
   width: 600px;
 }
 
-.creature-radio {
+.creature-select {
   display: flex;
   justify-content: space-evenly;
   border: 1px solid #A0702D;
@@ -68,4 +68,12 @@ main {
   width: 70px;
   font-size: 18px;
   color: #A0702D;
+}
+
+select {
+  border: 1px solid #A0702D;
+  font-size: 20px;
+  background-color: #FBF4E9;
+  color: #A0702D;
+  border-radius: 5px;
 }
