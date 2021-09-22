@@ -3,16 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Proza+Libre:wght@400;600&display=swap" rel="stylesheet">
   <title>AJAX Project</title>
   <link rel="icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  <header>
+<body class="beige-bg">
+  <header class="row">
+    <div class="column-full flex justify-center green-bg">
+      <h1 class="page-heading-text">Animal Crossing Creatures</h1>
+    </div>
   </header>
   <main>
+    <!-- find view -->
+    <div class="row justify-center" data-view="find" id="find-view">
+      <div class="column-full flex justify-center">
+        <form id="form" class="search-form">
+          <div class="creature-select">
+            <select name="select" id="select-creature">
+              <option>Select Creature Type</option>
+              <option value="fish">Fish</option>
+              <option value="bugs">Bug</option>
+              <option value="sea">Sea Creature</option>
+            </select>
+          </div>
+          <div class="">
+            <input name="text-input" class="find-input beige-bg" type="text" placeholder="Enter creature name">
+          </div>
+          <button id="find" class="btn" type="button">Find</button>
+        </form>
+      </div>
+      <p id="message" class=""></p>
+    </div>
+    <!-- result view -->
+    <div class="row justify-center hidden" data-view="result" id="result-view">
+       <div class="column-full flex justify-center results">
+         <h1 id="result-name" class="font-proza"></h1>
+         <img class="result-image">
+         <p class="">Available to Catch Today</p>
+         <p>Northern Hemisphere: <span id="north" class="text-pink"></span></p>
+         <p>Southern Hemisphere: <span id="south" class="text-pink"></span></p>
+         <button class="btn btn-details" type="button">Details</button>
+       </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
