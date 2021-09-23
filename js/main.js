@@ -33,26 +33,49 @@ function createCatchItem(entry) {
   const $topRow = document.createElement('div');
   $topRow.classList.add('row');
   $topRow.classList.add('top-row');
+
   const $leftCol = document.createElement('div');
   const $img = document.createElement('img');
   $img.setAttribute('src', entry.creatureData.icon_uri);
   $img.setAttribute('alt', entry.creatureName);
-  $leftCol.classList.add('colummn-third');
+  $leftCol.classList.add('column-third');
   $leftCol.append($img);
+
   const $midCol = document.createElement('div');
-  $midCol.classList.add('colummn-third');
-  $midCol.textContent = entry.creatureName;
+  $midCol.classList.add('column-third');
+  const $name = document.createElement('p');
+  $name.textContent = entry.creatureName;
+  $name.classList.add('list-item-title');
+  $midCol.append($name);
+
   const $rightCol = document.createElement('div');
   const $check = document.createElement('input');
   $check.setAttribute('type', 'checkbox');
   const $caught = document.createElement('span');
+  $caught.className = 'caught-check';
   $caught.textContent = 'Caught!';
   const $label = document.createElement('label');
   $label.append($caught, $check);
-  $rightCol.classList.add('colummn-third');
+  $rightCol.classList.add('column-third');
   $rightCol.append($label);
   $topRow.append($leftCol, $midCol, $rightCol);
-  console.log($topRow);
+
+  const $bottomRow = document.createElement('div');
+  $bottomRow.className = 'row';
+  const $commentsRow = document.createElement('div');
+  $commentsRow.classList.add('column-full');
+  $commentsRow.classList.add('comments-row');
+  $bottomRow.append($commentsRow);
+  const $comments = document.createElement('span');
+  $comments.textContent = 'Comment:';
+  const $button = document.createElement('button');
+  $button.setAttribute('type', 'button');
+  $button.className = 'btn-edit';
+  $button.innerHTML = '<i class="fas fa-pen"></i>';
+  $commentsRow.append($comments, $button);
+  $li.append($topRow, $bottomRow);
+  console.log($li);
+  return $li;
 }
 function setCatchList() {
   if (data.catchEntries.length === 0) {
