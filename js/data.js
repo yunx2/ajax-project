@@ -11,6 +11,7 @@ let data = {
 const viewsList = document.querySelectorAll('[data-view]');
 
 function changeView(view) {
+  // console.log('viewsList', viewsList)
   data.view = view;
   for (let i = 0; i < viewsList.length; i++) {
     const $view = viewsList[i];

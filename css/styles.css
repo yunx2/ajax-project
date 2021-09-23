@@ -183,6 +183,7 @@ select {
 
 .top-row {
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .btn-edit {
@@ -210,4 +211,19 @@ li {
 .find-buttons {
   display: flex;
   justify-content: space-between;
+}
+
+.col-right,
+.col-left {
+  display: flex;
+  justify-content: center;
+}
+
+.col-mid {
+  text-align: center;
+}
+
+.caught-check {
+  color:#6ECB63;
+  font-family: 'Proza Libre', serif;
 }

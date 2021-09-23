@@ -10,6 +10,7 @@ const $resultsAdd = document.getElementById('results-add');
 const $detailsAdd = document.getElementById('add-details');
 const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
+const $catchList = document.getElementById('catch-entries');
 
 $headingButton.addEventListener('click', () => {
   changeView('find');
@@ -26,12 +27,38 @@ function handleAdd() {
 console.log('data.catchEntries:', data.catchEntries);
 }
 
+function createCatchItem() {
+  const $li = document.createElement('li');
+  $li.classList.add('catch-item');
+  const $topRow = document.createElement('div');
+  $topRow.classList.add('row');
+  $topRow.classList.add('top-row');
+  const $leftCol = document.createElement('div');
+  $leftCol.classList.add('colummn-third');
+  const $midCol = document.createElement('div');
+  $midCol.classList.add('colummn-third');
+  const $rightCol = document.createElement('div');
+  $rightCol.classList.add('colummn-third');
+  $topRow.append($leftCol, $midCol, $rightCol);
+  console.log($topRow);
+}
 function setCatchList() {
-
+  if (data.catchEntries.length === 0) {
+    document.getElementById('message-list').classList.remove('hidden');
+  } else {
+    // data.catchEntries.forEach(current => {
+    //   const $item = createCatchItem(current);
+    //   console.log($item)
+    //   // $catchList.append($item);
+     createCatchItem()
+    // });
+  }
 }
 
-$catchListButton.addEventListener('click', () => {
+$catchListButton.addEventListener('click', (e) => {
+  e.preventDefault();
   changeView('list');
+  setCatchList()
 });
 
 $resultsAdd.addEventListener('click', handleAdd);
