@@ -13,24 +13,28 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="beige-bg">
-  <header class="row">
+  <header class="row page-header">
     <div class="column-full flex justify-center green-bg">
       <h1 class="page-heading-text">Animal Crossing Creatures</h1>
     </div>
   </header>
   <main>
     <!-- find view -->
-    <div class="row justify-center" data-view="find" id="find-view">
+    <div class="row justify-center " data-view="find" id="find-view">
       <div class="column-full flex justify-center">
         <form id="form" class="search-form">
           <div class="creature-select">
-            <label> Select Creature Type
+            <div class="column-half center-text">
+               <label for="select-creature "> Select Creature Type</label>
+            </div>
+            <div class="column-half">
               <select name="select" id="select-creature">
                 <option value="fish">Fish</option>
                 <option value="bugs">Bug</option>
                 <option value="sea">Sea Creature</option>
               </select>
-            </label>
+            </div>
+
           </div>
           <div class="">
             <input name="text-input" class="find-input beige-bg" type="text" placeholder="Enter creature name">
@@ -39,6 +43,12 @@
         </form>
       </div>
       <p id="message" class=""></p>
+    </div>
+    <!-- list view -->
+    <div class="row" data-view="list">
+      <div class="column-full">
+        <h2>My Catch List</h2>
+      </div>
     </div>
     <!-- result view -->
     <div class="row justify-center bottom-row" data-view="result" id="result-view">

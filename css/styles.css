@@ -42,6 +42,10 @@ main {
   justify-content: center;
 }
 
+.center-text {
+  text-align: center;
+}
+
 .page-heading-text {
   color: #a0702d;
   font-family: 'Proza Libre', serif;
@@ -49,12 +53,17 @@ main {
   text-align: center;
 }
 
+.page-header {
+  border-bottom: 1px solid #a0702d;;
+}
+
 .font-proza {
   font-family: 'Proza Libre', serif;
 }
 
 .search-form {
-  width: 600px;
+  width: 80%;
+  margin-top: 80px;
 }
 
 .creature-select {
