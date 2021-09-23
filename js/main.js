@@ -6,6 +6,21 @@ const $south = document.getElementById('south');
 const $resultName = document.getElementById('result-name');
 const $resultImg = document.querySelector('.result-image');
 const $details = document.getElementById('details');
+const $resultsAdd = document.getElementById('results-add');
+const $detailsAdd = document.getElementById('add-details');
+
+function handleAdd() {
+  const catchItem = {
+    id: data.nextId,
+    creatureName: data.creature,
+    creatureData: data.response
+  };
+  data.nextId++;
+console.log('catchItem:', catchItem)
+}
+
+$resultsAdd.addEventListener('click', handleAdd);
+$detailsAdd.addEventListener('click', handleAdd);
 
 function convertMonth(str) {
   const monthsObj = {
@@ -113,6 +128,7 @@ request.addEventListener('load', e => {
 });
 
 function handleFind(e) {
+  // console.log('target',e.target)
   const $selectControl = $form.elements.select;
   const $textControl = $form.elements['text-input'];
   data.type = $selectControl.value;
@@ -122,4 +138,4 @@ function handleFind(e) {
   request.send();
 }
 
-$find.addEventListener('click', handleFind);
+$find.addEventListener('click', e => handleFind(e));

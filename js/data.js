@@ -3,8 +3,11 @@ const data = {
   view: 'find',
   response: null,
   creature: '',
-  type: ''
+  type: '',
+  catchEntries: [],
+  nextId: 1
 };
+
 const viewsList = document.querySelectorAll('[data-view]');
 
 function changeView(view) {
