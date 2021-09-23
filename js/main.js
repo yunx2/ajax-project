@@ -27,18 +27,30 @@ function handleAdd() {
 console.log('data.catchEntries:', data.catchEntries);
 }
 
-function createCatchItem() {
+function createCatchItem(entry) {
   const $li = document.createElement('li');
   $li.classList.add('catch-item');
   const $topRow = document.createElement('div');
   $topRow.classList.add('row');
   $topRow.classList.add('top-row');
   const $leftCol = document.createElement('div');
+  const $img = document.createElement('img');
+  $img.setAttribute('src', entry.creatureData.icon_uri);
+  $img.setAttribute('alt', entry.creatureName);
   $leftCol.classList.add('colummn-third');
+  $leftCol.append($img);
   const $midCol = document.createElement('div');
   $midCol.classList.add('colummn-third');
+  $midCol.textContent = entry.creatureName;
   const $rightCol = document.createElement('div');
+  const $check = document.createElement('input');
+  $check.setAttribute('type', 'checkbox');
+  const $caught = document.createElement('span');
+  $caught.textContent = 'Caught!';
+  const $label = document.createElement('label');
+  $label.append($caught, $check);
   $rightCol.classList.add('colummn-third');
+  $rightCol.append($label);
   $topRow.append($leftCol, $midCol, $rightCol);
   console.log($topRow);
 }
@@ -50,7 +62,9 @@ function setCatchList() {
     //   const $item = createCatchItem(current);
     //   console.log($item)
     //   // $catchList.append($item);
-     createCatchItem()
+     createCatchItem({creatureName: 'Carp',
+     creatureData: { icon_uri: 'https://acnhapi.com/v1/icons/fish/5' }
+    })
     // });
   }
 }
