@@ -6,6 +6,18 @@ main {
   background-color: #b1e693;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.font-bold {
+  font-weight: 600;
+}
+
 .text-brown {
   color: #a0702d;
 }
@@ -33,6 +45,8 @@ main {
 .page-heading-text {
   color: #a0702d;
   font-family: 'Proza Libre', serif;
+  width: 100%;
+  text-align: center;
 }
 
 .font-proza {
@@ -98,4 +112,29 @@ select {
 .result-image {
   width: 300px;
   height: auto;
+}
+
+.catch-phrase {
+  font-style: italic;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-add {
+  margin-right: 20px;
+  width: 60px;
+}
+
+.bottom-row {
+  margin-bottom: 50px;
+}
+
+.img-bells {
+  width: auto;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.price-info {
+  align-items: baseline;
 }
