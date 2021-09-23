@@ -19,9 +19,6 @@ function changeView(view) {
     }
   }
 }
-// function handlePageLoad() {
-//   changeView('find');
-// }
 
 document.addEventListener('DOMContentLoaded', e => {
   changeView('find');

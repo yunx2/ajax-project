@@ -1,5 +1,4 @@
 const $find = document.getElementById('find');
-const $resultView = document.getElementById('result-view');
 const $form = document.getElementById('form');
 const $message = document.getElementById('message');
 const $north = document.getElementById('north');
@@ -68,7 +67,6 @@ function fillDetails() {
 
 $details.addEventListener('click', e => {
   fillDetails();
-  // console.log('view:', viewsList);
   changeView('details');
 });
 
