@@ -97,7 +97,7 @@ request.addEventListener('load', e => {
   if (data.response) {
     // handle response
     $message.textContent = null;
-    const creatureName = data.response['file-name'];
+    const creatureName = data.response.name['name-USen'];
     $resultImg.setAttribute('src', data.response.icon_uri);
     $resultImg.setAttribute('alt', creatureName);
     $resultName.textContent = creatureName.toUpperCase();
@@ -117,9 +117,10 @@ request.addEventListener('load', e => {
 function handleFind(e) {
   const $selectControl = $form.elements.select;
   const $textControl = $form.elements['text-input'];
-  const type = $selectControl.value;
-  data.creature = $textControl.value.toLowerCase();
-  request.open('GET', `https://acnhapi.com/v1/${type}/${data.creature}`);
+  data.type = $selectControl.value;
+  const name = $textControl.value.toLowerCase();
+  data.creature = name.replaceAll(' ', '_');
+  request.open('GET', `https://acnhapi.com/v1/${data.type}/${data.creature}`);
   request.send();
 }
 
