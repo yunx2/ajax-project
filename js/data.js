@@ -21,5 +21,5 @@ function changeView(view) {
 }
 
 document.addEventListener('DOMContentLoaded', e => {
-  changeView('find');
+  // changeView('find');
 });
