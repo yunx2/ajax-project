@@ -16,7 +16,8 @@ function handleAdd() {
     creatureData: data.response
   };
   data.nextId++;
-console.log('catchItem:', catchItem)
+  data.catchEntries.push(catchItem);
+console.log('data.catchEntries:', data.catchEntries);
 }
 
 $resultsAdd.addEventListener('click', handleAdd);

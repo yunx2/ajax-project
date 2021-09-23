@@ -26,3 +26,11 @@ function changeView(view) {
 document.addEventListener('DOMContentLoaded', e => {
   // changeView('find');
 });
+
+window.addEventListener('beforeunload', ()=> {
+  data.creature = null;
+  data.type = null;
+  data.view = 'find';
+  const dataJSON = JSON.stringify(data);
+  localStorage.setItem('dataJSON', dataJSON);
+});
