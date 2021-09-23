@@ -1,5 +1,5 @@
 /* exported data */
-const data = {
+let data = {
   view: 'find',
   response: null,
   creature: '',
@@ -25,6 +25,10 @@ function changeView(view) {
 
 document.addEventListener('DOMContentLoaded', e => {
   // changeView('find');
+  const dataJSON = localStorage.getItem('dataJSON');
+  if (dataJSON) {
+    data = JSON.parse(dataJSON);
+  }
 });
 
 window.addEventListener('beforeunload', ()=> {
