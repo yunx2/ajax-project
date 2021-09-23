@@ -180,7 +180,24 @@ select {
   justify-content: space-evenly;
 }
 
+.btn-edit {
+  color:  #6ECB63;
+  background-color: #fbf4e9;
+  border: none;
+}
+
+/* @media screen and (min-width: 768px) {
+  .top-row {
+    justify-content: center;
+  }
+} */
+
 li {
   width: 50%;
   border: 3px solid #6ECB63;
+}
+
+.comments-row {
+  display: flex;
+  justify-content: space-between;
 }
