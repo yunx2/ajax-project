@@ -8,6 +8,12 @@ const $resultImg = document.querySelector('.result-image');
 const $details = document.getElementById('details');
 const $resultsAdd = document.getElementById('results-add');
 const $detailsAdd = document.getElementById('add-details');
+const $catchListButton = document.getElementById('btn-catch');
+const $headingButton = document.getElementById('btn-heading');
+
+$headingButton.addEventListener('click', () => {
+  changeView('find');
+});
 
 function handleAdd() {
   const catchItem = {
@@ -19,6 +25,14 @@ function handleAdd() {
   data.catchEntries.push(catchItem);
 console.log('data.catchEntries:', data.catchEntries);
 }
+
+function setCatchList() {
+
+}
+
+$catchListButton.addEventListener('click', () => {
+  changeView('list');
+});
 
 $resultsAdd.addEventListener('click', handleAdd);
 $detailsAdd.addEventListener('click', handleAdd);

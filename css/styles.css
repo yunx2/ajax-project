@@ -109,6 +109,11 @@ main {
   width: 80px;
 }
 
+.btn-heading {
+   background-color: #b1e693;
+   border: none;
+}
+
 select {
   border: 1px solid #a0702d;
   font-size: 20px;
@@ -198,6 +203,11 @@ li {
 }
 
 .comments-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.find-buttons {
   display: flex;
   justify-content: space-between;
 }
