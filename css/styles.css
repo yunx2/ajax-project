@@ -201,7 +201,7 @@ select {
 li {
   width: 50%;
   border: 3px solid #6ECB63;
-  marging bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .comments-row {
@@ -212,6 +212,7 @@ li {
 .find-buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .col-right,
@@ -227,4 +228,11 @@ li {
 .caught-check {
   color:#6ECB63;
   font-family: 'Proza Libre', serif;
+}
+
+#btn-catch {
+  background-color: #fbf4e9;
+  color: #6ECB63;
+  height: 25px;
+  border: none;
 }

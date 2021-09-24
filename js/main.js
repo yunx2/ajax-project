@@ -23,8 +23,8 @@ function handleAdd() {
     creatureData: data.response
   };
   data.nextId++;
-  data.catchEntries.push(catchItem);
-console.log('data.catchEntries:', data.catchEntries);
+  data.catchList.push(catchItem);
+// console.log('data.catchList:', data.catchList);
 }
 
 function createCatchItem(entry) {
@@ -77,29 +77,25 @@ function createCatchItem(entry) {
   $button.innerHTML = '<i class="fas fa-pen"></i>';
   $commentsRow.append($comments, $button);
   $li.append($topRow, $bottomRow);
-  console.log($li);
+  // console.log($li);
   return $li;
 }
 
 function setCatchList() {
-  if (data.catchEntries.length === 0) {
+  if (data.catchList.length === 0) {
     document.getElementById('message-list').classList.remove('hidden');
   } else {
-    data.catchEntries.forEach(current => {
+    data.catchList.forEach(current => {
       const $item = createCatchItem(current);
-      console.log($item)
+      // console.log($item)
       $catchList.append($item);
-    //  createCatchItem({creatureName: 'Carp',
-    //  creatureData: { icon_uri: 'https://acnhapi.com/v1/icons/fish/5' }
-    // })
     });
   }
 }
 
-$catchListButton.addEventListener('click', (e) => {
-  e.preventDefault();
+$catchListButton.addEventListener('click', () => {
   changeView('list');
-  setCatchList()
+  setCatchList();
 });
 
 $resultsAdd.addEventListener('click', handleAdd);
