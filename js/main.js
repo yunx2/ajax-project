@@ -10,7 +10,7 @@ const $resultsAdd = document.getElementById('results-add');
 const $detailsAdd = document.getElementById('add-details');
 const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
-
+const $notifications = document.getElementById('notifications');
 
 $headingButton.addEventListener('click', () => {
   changeView('find');
@@ -18,10 +18,21 @@ $headingButton.addEventListener('click', () => {
 
 $catchListButton.addEventListener('click', () => {
   changeView('list');
-  // setCatchList();
 });
 
+function isAdded() {
+  const catchItem = data.catchList.find(item => item.creatureName === data.displayName);
+  // console.log('item:', catchItem);
+  return Boolean(catchItem);
+}
+
 function handleAdd() {
+  // if creature already in catchList return
+  if (isAdded()) {
+    console.log('already in list');
+    $notifications.textContent = `${data.displayName} already added`;
+    return;
+  }
   const catchItem = {
     id: data.nextId,
     creatureName: data.displayName,
@@ -117,7 +128,7 @@ function displayAvailable(availability, node) {
   }
 }
 
-function capitalizeIntial(str) {
+function capitalizeInitial(str) {
   const words = str.split(' ');
   const capitalized = [];
   // console.log('words Array:', words);
@@ -140,7 +151,7 @@ request.addEventListener('load', e => {
     // handle response
     $message.textContent = null;
     const creatureName = data.response.name['name-USen'];
-    data.displayName = capitalizeIntial(creatureName);
+    data.displayName = capitalizeInitial(creatureName);
     // console.log('name USen', data.displayName);
     $resultImg.setAttribute('src', data.response.icon_uri);
     $resultImg.setAttribute('alt', data.displayName);
