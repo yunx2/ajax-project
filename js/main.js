@@ -11,10 +11,14 @@ const $detailsAdd = document.getElementById('add-details');
 const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
+const $confirmDelete = document.querySelector('dialog');
 
 function handleCheck(e) {
   const $toDelete = document.querySelector(`[data-id='${e.target.id}']`);
   $toDelete.classList.add('hidden');
+  const $confirm = document.getElementById('confirm');
+  $confirm.textContent = 'Remove creature from To-Catch List?';
+  $confirmDelete.showModal();
   console.log('$toDelete:', $toDelete);
 }
 
