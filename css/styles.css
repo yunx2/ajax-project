@@ -201,6 +201,7 @@ select {
 li {
   width: 50%;
   border: 3px solid #6ECB63;
+  marging bottom: 10px;
 }
 
 .comments-row {

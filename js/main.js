@@ -39,10 +39,12 @@ function createCatchItem(entry) {
   $img.setAttribute('src', entry.creatureData.icon_uri);
   $img.setAttribute('alt', entry.creatureName);
   $leftCol.classList.add('column-third');
+  $leftCol.classList.add('col-left');
   $leftCol.append($img);
 
   const $midCol = document.createElement('div');
   $midCol.classList.add('column-third');
+  $midCol.classList.add('col-mid');
   const $name = document.createElement('p');
   $name.textContent = entry.creatureName;
   $name.classList.add('list-item-title');
@@ -57,6 +59,7 @@ function createCatchItem(entry) {
   const $label = document.createElement('label');
   $label.append($caught, $check);
   $rightCol.classList.add('column-third');
+  $rightCol.classList.add('col-right');
   $rightCol.append($label);
   $topRow.append($leftCol, $midCol, $rightCol);
 
@@ -77,18 +80,19 @@ function createCatchItem(entry) {
   console.log($li);
   return $li;
 }
+
 function setCatchList() {
   if (data.catchEntries.length === 0) {
     document.getElementById('message-list').classList.remove('hidden');
   } else {
-    // data.catchEntries.forEach(current => {
-    //   const $item = createCatchItem(current);
-    //   console.log($item)
-    //   // $catchList.append($item);
-     createCatchItem({creatureName: 'Carp',
-     creatureData: { icon_uri: 'https://acnhapi.com/v1/icons/fish/5' }
-    })
-    // });
+    data.catchEntries.forEach(current => {
+      const $item = createCatchItem(current);
+      console.log($item)
+      $catchList.append($item);
+    //  createCatchItem({creatureName: 'Carp',
+    //  creatureData: { icon_uri: 'https://acnhapi.com/v1/icons/fish/5' }
+    // })
+    });
   }
 }
 
