@@ -5,7 +5,7 @@ let data = {
   creature: '',
   displayName: '',
   type: '',
-  catchEntries: [],
+  catchList: [],
   nextId: 1
 };
 
@@ -34,7 +34,10 @@ function createCatchItem(entry) {
 
   const $rightCol = document.createElement('div');
   const $check = document.createElement('input');
+  // $check.className = 'check';
   $check.setAttribute('type', 'checkbox');
+  $check.setAttribute('name', 'remove');
+  $check.className = 'check';
   const $caught = document.createElement('span');
   $caught.className = 'caught-check';
   $caught.textContent = 'Caught!';
@@ -70,13 +73,10 @@ function setCatchList() {
     $message.textContent = 'There\'s nothing here yet...';
     $message.id = 'message-list';
     $catchList.append($message);
-
   } else {
     // remove any items that are already set
     $catchList.innerHTML = '';
     // set items again from catchlist
-    // document.getElementById('message-list').classList.add('hidden');
-    // console.log('items to add:', data.catchList)
     data.catchList.forEach(current => {
       const $item = createCatchItem(current);
       // console.log($item)
@@ -105,11 +105,12 @@ function changeView(view) {
 }
 
 document.addEventListener('DOMContentLoaded', e => {
-  changeView('find');
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
     data = JSON.parse(dataJSON);
+     changeView('list');
   }
+
 });
 
 window.addEventListener('beforeunload', ()=> {

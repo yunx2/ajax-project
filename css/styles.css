@@ -201,12 +201,6 @@ select {
   border: none;
 }
 
-/* @media screen and (min-width: 768px) {
-  .top-row {
-    justify-content: center;
-  }
-} */
-
 li {
   width: 50%;
   border: 3px solid #6ECB63;
@@ -248,4 +242,11 @@ li {
 
 #find:active {
   transform: translateY(0.25rem);
+}
+
+.check {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  background: #a0702d;
 }

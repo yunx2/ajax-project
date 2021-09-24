@@ -12,6 +12,12 @@ const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
 
+function handleCheck(e) {
+  console.log('e.target:', e.target);
+}
+
+$catchList.addEventListener('input', e => handleCheck(e));
+
 $headingButton.addEventListener('click', () => {
   changeView('find');
 });
