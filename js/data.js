@@ -6,14 +6,15 @@ let data = {
   displayName: '',
   type: '',
   catchList: [],
-  nextId: 1
+  nextId: 1,
+  // editing: null
 };
 
 function createCatchItem(entry) {
   const $li = document.createElement('li');
   // $li.classList.add('catch-item');
   $li.setAttribute('data-id', entry.id);
-  // $li.setAttribute('data-creature', entry.creatureName);
+  $li.setAttribute('data-creature', entry.creatureName);
   // console.log($li)
   const $topRow = document.createElement('div');
   $topRow.classList.add('row');
@@ -71,6 +72,8 @@ function createCatchItem(entry) {
 }
 const $catchList = document.getElementById('catch-entries'); // the ul element that list items get appended to
 function setCatchList() {
+  // remove any items that are already set
+    $catchList.innerHTML = '';
   if (data.catchList.length === 0) {
     // create $message element and append to $catchlist
     const $message = document.createElement('p');

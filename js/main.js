@@ -11,22 +11,28 @@ const $detailsAdd = document.getElementById('add-details');
 const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
-const $confirmDelete = document.querySelector('dialog');
+// const $confirmDelete = document.querySelector('dialog');
+// const $undo = document.getElementById('btn-undo');
+// const $delete = document.getElementById('btn-delete');
 
-// document.getElementById('btn-cancel').addEventListener('click', e => {
-//   $confirmDelete
+// $undo.addEventListener('click', e => {
+
+//   $confirmDelete.close();
 // })
 
 function handleCheck(e) {
   const $toDelete = document.querySelector(`[data-id='${e.target.id}']`);
+  // data.editing = e.target.getAttribute('data-id');
+  // console.log(data.editing)
+  // document.getElementById('confirm').textContent = `Remove ${$toDelete.getAttribute('data-creature')}?`;
+  // $confirmDelete.showModal();
   $toDelete.remove();
   data.catchList = data.catchList.filter(item => item.id != e.target.id);
-  console.log('list after delele:', data.catchList)
+  // console.log('list after delele:', data.catchList)
   // $toDelete.classList.add('hidden');
   // const $confirm = document.getElementById('confirm');
-  // $confirm.textContent = 'Remove creature from To-Catch List?';
   // $confirmDelete.showModal();
-  // console.log('$toDelete:', $toDelete);
+  console.log('$toDelete:', $toDelete);
 }
 
 $catchList.addEventListener('input', e => handleCheck(e));
