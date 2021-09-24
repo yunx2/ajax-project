@@ -26,11 +26,17 @@ function isAdded() {
   return Boolean(catchItem);
 }
 
+function showNotification(message) {
+  $notifications.textContent = message;
+  setTimeout(showNotification, 2000, '');
+}
+
 function handleAdd() {
   // if creature already in catchList return
   if (isAdded()) {
     console.log('already in list');
-    $notifications.textContent = `${data.displayName} already added`;
+    const msg = `${data.displayName} already added`;
+    showNotification(msg);
     return;
   }
   const catchItem = {
