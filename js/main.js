@@ -13,7 +13,9 @@ const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
 
 function handleCheck(e) {
-  console.log('e.target:', e.target);
+  const $toDelete = document.querySelector(`[data-id='${e.target.id}']`);
+  $toDelete.classList.add('hidden');
+  console.log('$toDelete:', $toDelete);
 }
 
 $catchList.addEventListener('input', e => handleCheck(e));
