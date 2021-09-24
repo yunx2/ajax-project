@@ -11,7 +11,9 @@ let data = {
 
 function createCatchItem(entry) {
   const $li = document.createElement('li');
-  $li.classList.add('catch-item');
+  // $li.classList.add('catch-item');
+  $li.setAttribute('data-id', entry.id);
+  console.log($li)
   const $topRow = document.createElement('div');
   $topRow.classList.add('row');
   $topRow.classList.add('top-row');
@@ -36,8 +38,9 @@ function createCatchItem(entry) {
   const $check = document.createElement('input');
   // $check.className = 'check';
   $check.setAttribute('type', 'checkbox');
-  $check.setAttribute('name', 'remove');
-  $check.className = 'check';
+  // $check.setAttribute('name', 'itemId');
+  // $check.setAttribute('value', 'itemId');
+  $check.id = entry.id;
   const $caught = document.createElement('span');
   $caught.className = 'caught-check';
   $caught.textContent = 'Caught!';
