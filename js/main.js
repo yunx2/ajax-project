@@ -16,17 +16,6 @@ $headingButton.addEventListener('click', () => {
   changeView('find');
 });
 
-function handleAdd() {
-  const catchItem = {
-    id: data.nextId,
-    creatureName: data.creature,
-    creatureData: data.response
-  };
-  data.nextId++;
-  data.catchList.push(catchItem);
-// console.log('data.catchList:', data.catchList);
-}
-
 function createCatchItem(entry) {
   const $li = document.createElement('li');
   $li.classList.add('catch-item');
@@ -85,6 +74,14 @@ function setCatchList() {
   if (data.catchList.length === 0) {
     document.getElementById('message-list').classList.remove('hidden');
   } else {
+    // remove any items that are already set
+    document.getElementById('message-list').classList.add('hidden');
+    const listItems = document.getElementsByClassName('catch-item');
+    for (let i = 0; i < listItems.length; i++) {
+      const $item = listItems[i];
+      $item.remove();
+    }
+    // set items again from catchlist
     data.catchList.forEach(current => {
       const $item = createCatchItem(current);
       // console.log($item)
@@ -97,6 +94,17 @@ $catchListButton.addEventListener('click', () => {
   changeView('list');
   setCatchList();
 });
+
+function handleAdd() {
+  const catchItem = {
+    id: data.nextId,
+    creatureName: data.creature,
+    creatureData: data.response
+  };
+  data.nextId++;
+  data.catchList.unshift(catchItem);
+// console.log('data.catchList:', data.catchList);
+}
 
 $resultsAdd.addEventListener('click', handleAdd);
 $detailsAdd.addEventListener('click', handleAdd);
@@ -124,11 +132,12 @@ function convertMonth(str) {
 function fillDetails() {
   const { name, availability, price, icon_uri } = data.response;
   const phrase = data.response['catch-phrase'];
-  const creatureName = name['name-USen'];
-  document.getElementById('details-name').textContent = creatureName.toUpperCase();
+  // const creatureName = name['name-USen'];
+  // data.displayName = creatureName;
+  document.getElementById('details-name').textContent = data.displayName.toUpperCase();
   const $detailsImg = document.getElementById('details-img');
   $detailsImg.setAttribute('src', icon_uri);
-  $detailsImg.setAttribute('alt', creatureName);
+  $detailsImg.setAttribute('alt', data.displayName);
   document.getElementById('phrase').textContent = phrase;
   if (availability.location) {
     document.getElementById('location').textContent = availability.location;
@@ -190,10 +199,11 @@ request.addEventListener('load', e => {
     // handle response
     $message.textContent = null;
     const creatureName = data.response.name['name-USen'];
+    data.displayName = creatureName;
+    console.log('name USen', data.displayName);
     $resultImg.setAttribute('src', data.response.icon_uri);
-    $resultImg.setAttribute('alt', creatureName);
+    $resultImg.setAttribute('alt', data.displayName);
     $resultName.textContent = creatureName.toUpperCase();
-
     const availableNorth = checkAvailability('northern');
     const availableSouth = checkAvailability('southern');
     displayAvailable(availableNorth, $north);
@@ -213,6 +223,12 @@ function handleFind(e) {
   data.type = $selectControl.value;
   const name = $textControl.value.toLowerCase();
   data.creature = name.replaceAll(' ', '_');
+  // console.log('creature type:', data.type, 'creature:', data.creature)
+  // remove previous results from results view
+  $resultImg.setAttribute('src', null);
+  $resultImg.setAttribute('alt', null);
+  $resultName.textContent = null;
+  // send request
   request.open('GET', `https://acnhapi.com/v1/${data.type}/${data.creature}`);
   request.send();
 }

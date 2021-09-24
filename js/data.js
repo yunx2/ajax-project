@@ -3,6 +3,7 @@ let data = {
   view: 'find',
   response: null,
   creature: '',
+  displayName: '',
   type: '',
   catchEntries: [],
   nextId: 1
