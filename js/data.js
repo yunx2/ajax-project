@@ -62,19 +62,23 @@ function createCatchItem(entry) {
   // console.log($li);
   return $li;
 }
-
+const $catchList = document.getElementById('catch-entries'); // the ul element that list items get appended to
 function setCatchList() {
   if (data.catchList.length === 0) {
-    document.getElementById('message-list').classList.remove('hidden');
+    // document.getElementById('message-list').classList.remove('hidden');
   } else {
     // remove any items that are already set
-    document.getElementById('message-list').classList.add('hidden');
+    $catchList.innerHTML = '';
     const listItems = document.getElementsByClassName('catch-item');
-    for (let i = 0; i < listItems.length; i++) {
-      const $item = listItems[i];
-      $item.remove();
-    }
+    console.log('items to be removed:', listItems)
+    // for (let i = 0; i < listItems.length; i++) {
+    //   const $item = listItems[i];
+    //   $item.remove();
+    //   console.log('should be null:', $item);
+    // }
     // set items again from catchlist
+    // document.getElementById('message-list').classList.add('hidden');
+    console.log('items to add:', data.catchList)
     data.catchList.forEach(current => {
       const $item = createCatchItem(current);
       // console.log($item)
@@ -88,6 +92,9 @@ const viewsList = document.querySelectorAll('[data-view]');
 function changeView(view) {
   // console.log('viewsList', viewsList)
   data.view = view;
+  if (data.view === 'list') {
+    setCatchList();
+  }
   for (let i = 0; i < viewsList.length; i++) {
     const $view = viewsList[i];
     if ($view.getAttribute('data-view') === data.view) {

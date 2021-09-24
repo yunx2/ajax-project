@@ -10,7 +10,7 @@ const $resultsAdd = document.getElementById('results-add');
 const $detailsAdd = document.getElementById('add-details');
 const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
-const $catchList = document.getElementById('catch-entries');
+
 
 $headingButton.addEventListener('click', () => {
   changeView('find');
@@ -18,7 +18,7 @@ $headingButton.addEventListener('click', () => {
 
 $catchListButton.addEventListener('click', () => {
   changeView('list');
-  setCatchList();
+  // setCatchList();
 });
 
 function handleAdd() {
