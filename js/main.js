@@ -141,7 +141,7 @@ request.addEventListener('load', e => {
     $message.textContent = null;
     const creatureName = data.response.name['name-USen'];
     data.displayName = capitalizeIntial(creatureName);
-    console.log('name USen', data.displayName);
+    // console.log('name USen', data.displayName);
     $resultImg.setAttribute('src', data.response.icon_uri);
     $resultImg.setAttribute('alt', data.displayName);
     $resultName.textContent = creatureName.toUpperCase();

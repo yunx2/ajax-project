@@ -65,7 +65,12 @@ function createCatchItem(entry) {
 const $catchList = document.getElementById('catch-entries'); // the ul element that list items get appended to
 function setCatchList() {
   if (data.catchList.length === 0) {
-    // document.getElementById('message-list').classList.remove('hidden');
+    // create $message element and append to $catchlist
+    const $message = document.createElement('p');
+    $message.textContent = 'There\'s nothing here yet...';
+    $message.id = 'message-list';
+    $catchList.append($message);
+
   } else {
     // remove any items that are already set
     $catchList.innerHTML = '';
