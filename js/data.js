@@ -69,8 +69,8 @@ function setCatchList() {
   } else {
     // remove any items that are already set
     $catchList.innerHTML = '';
-    const listItems = document.getElementsByClassName('catch-item');
-    console.log('items to be removed:', listItems)
+    // const listItems = document.getElementsByClassName('catch-item');
+    // console.log('items to be removed:', listItems)
     // for (let i = 0; i < listItems.length; i++) {
     //   const $item = listItems[i];
     //   $item.remove();
@@ -78,7 +78,7 @@ function setCatchList() {
     // }
     // set items again from catchlist
     // document.getElementById('message-list').classList.add('hidden');
-    console.log('items to add:', data.catchList)
+    // console.log('items to add:', data.catchList)
     data.catchList.forEach(current => {
       const $item = createCatchItem(current);
       // console.log($item)

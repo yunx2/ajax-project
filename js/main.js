@@ -24,7 +24,7 @@ $catchListButton.addEventListener('click', () => {
 function handleAdd() {
   const catchItem = {
     id: data.nextId,
-    creatureName: data.creature,
+    creatureName: data.displayName,
     creatureData: data.response
   };
   data.nextId++;
@@ -117,6 +117,20 @@ function displayAvailable(availability, node) {
   }
 }
 
+function capitalizeIntial(str) {
+  const words = str.split(' ');
+  const capitalized = [];
+  // console.log('words Array:', words);
+  words.forEach(word => {
+    const first = word[0].toUpperCase();
+    // console.log('word:', word);
+    const rest = word.slice(1);
+    // console.log('sliced:', rest);
+    capitalized.push(first + rest);
+  });
+  return capitalized.join(' ');
+}
+
 const request = new XMLHttpRequest();
 request.responseType = 'json';
 request.addEventListener('load', e => {
@@ -126,7 +140,7 @@ request.addEventListener('load', e => {
     // handle response
     $message.textContent = null;
     const creatureName = data.response.name['name-USen'];
-    data.displayName = creatureName;
+    data.displayName = capitalizeIntial(creatureName);
     console.log('name USen', data.displayName);
     $resultImg.setAttribute('src', data.response.icon_uri);
     $resultImg.setAttribute('alt', data.displayName);
