@@ -9,6 +9,7 @@
   flex-wrap: wrap;
 }
 
+.column-third,
 .column-full,
 .column-half {
   width: 100%;
@@ -19,12 +20,20 @@
     max-width: 900px;
   }
 
+  .column-third,
   .column-full,
   .column-half {
     padding: 0 0.75rem;
   }
 
+  .column-third
   .column-half {
     width: 50%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .column-third {
+    width: calc(100% / 3);
   }
 }

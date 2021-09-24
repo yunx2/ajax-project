@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    rel="stylesheet"
+    crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Proza+Libre:wght@400;600&display=swap" rel="stylesheet">
@@ -13,37 +18,62 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="beige-bg">
-  <header class="row">
+  <header class="row page-header">
     <div class="column-full flex justify-center green-bg">
-      <h1 class="page-heading-text">Animal Crossing Creatures</h1>
+      <button type="button" id="btn-heading"class="btn-heading">
+        <h1 class="page-heading-text">Animal Crossing Creatures</h1>
+      </button>
     </div>
+    <p id="notifications"></p>
   </header>
   <main>
     <!-- find view -->
-    <div class="row justify-center" data-view="find" id="find-view">
+    <div class="row justify-center " data-view="find" id="find-view">
       <div class="column-full flex justify-center">
         <form id="form" class="search-form">
           <div class="creature-select">
-            <label> Select Creature Type
+            <div class="column-half flex select-label">
+               <label for="select-creature" class=""> Select Creature Type</label>
+            </div>
+            <div class="column-half">
               <select name="select" id="select-creature">
                 <option value="fish">Fish</option>
                 <option value="bugs">Bug</option>
                 <option value="sea">Sea Creature</option>
               </select>
-            </label>
+            </div>
           </div>
           <div class="">
             <input name="text-input" class="find-input beige-bg" type="text" placeholder="Enter creature name">
           </div>
-          <button id="find" class="btn" type="button">Find</button>
+          <div class="find-buttons"><button id="find" class="btn" type="button">Find</button>
+            <button id="btn-catch" type="button">View To-Catch List</button></div>
         </form>
       </div>
       <p id="message" class=""></p>
     </div>
+    <!-- list view -->
+    <div class="row" data-view="list">
+      <div class="column-full flex direction-column align-center">
+        <div class="row"><h2 class="font-proza text-pink">My Catch List</h2></div>
+        <div class="row full-width">
+          <div class="column-full flex justify-center">
+            <ul id="catch-entries" class="flex direction-column align-center">
+                <!-- list items elements get generated here -->
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
     <!-- result view -->
     <div class="row justify-center bottom-row" data-view="result" id="result-view">
        <div class="column-full flex justify-center results">
-         <h1 id="result-name" class="font-proza"></h1>
+         <div class="row">
+           <button type="button" id="results-add" class="btn btn-add">Add</button>
+           <h1 id="result-name" class="font-proza"></h1>
+         </div>
+
          <img class="result-image">
          <p class="">Available to Catch Today</p>
          <p>Northern Hemisphere: <span id="north" class="text-pink"></span></p>

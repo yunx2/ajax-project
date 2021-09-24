@@ -18,6 +18,10 @@ main {
   font-weight: 600;
 }
 
+.text-green {
+  color: #6ECB63;
+}
+
 .text-brown {
   color: #a0702d;
 }
@@ -42,6 +46,10 @@ main {
   justify-content: center;
 }
 
+.center-text {
+  text-align: center;
+}
+
 .page-heading-text {
   color: #a0702d;
   font-family: 'Proza Libre', serif;
@@ -49,12 +57,17 @@ main {
   text-align: center;
 }
 
+.page-header {
+  border-bottom: 1px solid #a0702d;;
+}
+
 .font-proza {
   font-family: 'Proza Libre', serif;
 }
 
 .search-form {
-  width: 600px;
+  width: 80%;
+  margin-top: 80px;
 }
 
 .creature-select {
@@ -96,12 +109,25 @@ main {
   width: 80px;
 }
 
+.btn-details:active {
+  transform: translateY(0.25rem);
+}
+
+.btn-heading {
+   background-color: #b1e693;
+   border: none;
+}
+
 select {
   border: 1px solid #a0702d;
   font-size: 20px;
   background-color: #fbf4e9;
   color: #a0702d;
   border-radius: 5px;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .results {
@@ -125,6 +151,11 @@ select {
   width: 60px;
 }
 
+.btn-add:active{
+  transform: translateY(0.25rem);
+}
+
+
 .bottom-row {
   margin-bottom: 50px;
 }
@@ -137,4 +168,84 @@ select {
 
 .price-info {
   align-items: baseline;
+}
+
+.select-label {
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .select-label {
+    justify-content: flex-end;
+  }
+}
+
+#catch-entries {
+  list-style-type: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.list-item-title {
+  font-size: 24px;
+}
+
+.top-row {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btn-edit {
+  color:  #6ECB63;
+  background-color: #fbf4e9;
+  border: none;
+}
+
+/* @media screen and (min-width: 768px) {
+  .top-row {
+    justify-content: center;
+  }
+} */
+
+li {
+  width: 50%;
+  border: 3px solid #6ECB63;
+  margin-bottom: 10px;
+}
+
+.comments-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.find-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col-right,
+.col-left {
+  display: flex;
+  justify-content: center;
+}
+
+.col-mid {
+  text-align: center;
+}
+
+.caught-check {
+  color:#6ECB63;
+  font-family: 'Proza Libre', serif;
+}
+
+#btn-catch {
+  background-color: #fbf4e9;
+  color: #6ECB63;
+  height: 25px;
+  border: none;
+}
+
+#find:active {
+  transform: translateY(0.25rem);
 }

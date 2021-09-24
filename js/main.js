@@ -6,6 +6,52 @@ const $south = document.getElementById('south');
 const $resultName = document.getElementById('result-name');
 const $resultImg = document.querySelector('.result-image');
 const $details = document.getElementById('details');
+const $resultsAdd = document.getElementById('results-add');
+const $detailsAdd = document.getElementById('add-details');
+const $catchListButton = document.getElementById('btn-catch');
+const $headingButton = document.getElementById('btn-heading');
+const $notifications = document.getElementById('notifications');
+
+$headingButton.addEventListener('click', () => {
+  changeView('find');
+});
+
+$catchListButton.addEventListener('click', () => {
+  changeView('list');
+});
+
+function isAdded() {
+  const catchItem = data.catchList.find(item => item.creatureName === data.displayName);
+  // console.log('item:', catchItem);
+  return Boolean(catchItem);
+}
+
+function showNotification(message) {
+  $notifications.textContent = message;
+  setTimeout(showNotification, 2000, '');
+}
+
+function handleAdd() {
+  // if creature already in catchList return
+  if (isAdded()) {
+    console.log('already in list');
+    const msg = `${data.displayName} already added`;
+    showNotification(msg);
+    return;
+  }
+  const catchItem = {
+    id: data.nextId,
+    creatureName: data.displayName,
+    creatureData: data.response
+  };
+  data.nextId++;
+  data.catchList.unshift(catchItem);
+  changeView('list');
+// console.log('data.catchList:', data.catchList);
+}
+
+$resultsAdd.addEventListener('click', handleAdd);
+$detailsAdd.addEventListener('click', handleAdd);
 
 function convertMonth(str) {
   const monthsObj = {
@@ -28,13 +74,14 @@ function convertMonth(str) {
 }
 
 function fillDetails() {
-  const { name, availability, price, icon_uri } = data.response;
+  const { availability, price, icon_uri } = data.response;
   const phrase = data.response['catch-phrase'];
-  const creatureName = name['name-USen'];
-  document.getElementById('details-name').textContent = creatureName.toUpperCase();
+  // const creatureName = name['name-USen'];
+  // data.displayName = creatureName;
+  document.getElementById('details-name').textContent = data.displayName.toUpperCase();
   const $detailsImg = document.getElementById('details-img');
   $detailsImg.setAttribute('src', icon_uri);
-  $detailsImg.setAttribute('alt', creatureName);
+  $detailsImg.setAttribute('alt', data.displayName);
   document.getElementById('phrase').textContent = phrase;
   if (availability.location) {
     document.getElementById('location').textContent = availability.location;
@@ -87,6 +134,20 @@ function displayAvailable(availability, node) {
   }
 }
 
+function capitalizeInitial(str) {
+  const words = str.split(' ');
+  const capitalized = [];
+  // console.log('words Array:', words);
+  words.forEach(word => {
+    const first = word[0].toUpperCase();
+    // console.log('word:', word);
+    const rest = word.slice(1);
+    // console.log('sliced:', rest);
+    capitalized.push(first + rest);
+  });
+  return capitalized.join(' ');
+}
+
 const request = new XMLHttpRequest();
 request.responseType = 'json';
 request.addEventListener('load', e => {
@@ -96,10 +157,11 @@ request.addEventListener('load', e => {
     // handle response
     $message.textContent = null;
     const creatureName = data.response.name['name-USen'];
+    data.displayName = capitalizeInitial(creatureName);
+    // console.log('name USen', data.displayName);
     $resultImg.setAttribute('src', data.response.icon_uri);
-    $resultImg.setAttribute('alt', creatureName);
+    $resultImg.setAttribute('alt', data.displayName);
     $resultName.textContent = creatureName.toUpperCase();
-
     const availableNorth = checkAvailability('northern');
     const availableSouth = checkAvailability('southern');
     displayAvailable(availableNorth, $north);
@@ -113,13 +175,20 @@ request.addEventListener('load', e => {
 });
 
 function handleFind(e) {
+  // console.log('target',e.target)
   const $selectControl = $form.elements.select;
   const $textControl = $form.elements['text-input'];
   data.type = $selectControl.value;
   const name = $textControl.value.toLowerCase();
   data.creature = name.replaceAll(' ', '_');
+  // console.log('creature type:', data.type, 'creature:', data.creature)
+  // remove previous results from results view
+  $resultImg.setAttribute('src', null);
+  $resultImg.setAttribute('alt', null);
+  $resultName.textContent = null;
+  // send request
   request.open('GET', `https://acnhapi.com/v1/${data.type}/${data.creature}`);
   request.send();
 }
 
-$find.addEventListener('click', handleFind);
+$find.addEventListener('click', e => handleFind(e));
