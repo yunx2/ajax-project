@@ -13,13 +13,20 @@ const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
 const $confirmDelete = document.querySelector('dialog');
 
+// document.getElementById('btn-cancel').addEventListener('click', e => {
+//   $confirmDelete
+// })
+
 function handleCheck(e) {
   const $toDelete = document.querySelector(`[data-id='${e.target.id}']`);
-  $toDelete.classList.add('hidden');
-  const $confirm = document.getElementById('confirm');
-  $confirm.textContent = 'Remove creature from To-Catch List?';
-  $confirmDelete.showModal();
-  console.log('$toDelete:', $toDelete);
+  $toDelete.remove();
+  data.catchList = data.catchList.filter(item => item.id != e.target.id);
+  console.log('list after delele:', data.catchList)
+  // $toDelete.classList.add('hidden');
+  // const $confirm = document.getElementById('confirm');
+  // $confirm.textContent = 'Remove creature from To-Catch List?';
+  // $confirmDelete.showModal();
+  // console.log('$toDelete:', $toDelete);
 }
 
 $catchList.addEventListener('input', e => handleCheck(e));
