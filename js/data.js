@@ -115,9 +115,8 @@ document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
     data = JSON.parse(dataJSON);
-     changeView('list');
+    changeView('find');
   }
-
 });
 
 window.addEventListener('beforeunload', ()=> {
