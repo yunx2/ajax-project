@@ -109,6 +109,10 @@ main {
   width: 80px;
 }
 
+.btn-details:active {
+  transform: translateY(0.25rem);
+}
+
 .btn-heading {
    background-color: #b1e693;
    border: none;
@@ -240,4 +244,8 @@ li {
   color: #6ECB63;
   height: 25px;
   border: none;
+}
+
+#find:active {
+  transform: translateY(0.25rem);
 }

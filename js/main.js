@@ -130,7 +130,7 @@ function convertMonth(str) {
 }
 
 function fillDetails() {
-  const { name, availability, price, icon_uri } = data.response;
+  const { availability, price, icon_uri } = data.response;
   const phrase = data.response['catch-phrase'];
   // const creatureName = name['name-USen'];
   // data.displayName = creatureName;
