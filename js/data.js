@@ -62,7 +62,7 @@ function createCatchItem(entry) {
   $comments.textContent = 'Comment:';
   const $button = document.createElement('button');
   $button.setAttribute('type', 'button');
-  $button.className = 'btn-edit';
+  $button.className = 'icon-edit';
   $button.innerHTML = '<i class="fas fa-pen"></i>';
   $commentsRow.append($comments, $button);
   $li.append($topRow, $bottomRow);
@@ -114,9 +114,9 @@ document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
     data = JSON.parse(dataJSON);
-    changeView('find');
+    changeView('list');
   }
-  $editModal.showModal();
+  // $editModal.showModal();
 });
 
 window.addEventListener('beforeunload', () => {
