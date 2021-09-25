@@ -10,6 +10,8 @@ let data = {
   // editing: null
 };
 
+const $editModal = document.getElementById('edit-view');
+
 function createCatchItem(entry) {
   const $li = document.createElement('li');
   // $li.classList.add('catch-item');
@@ -38,10 +40,7 @@ function createCatchItem(entry) {
 
   const $rightCol = document.createElement('div');
   const $check = document.createElement('input');
-  // $check.className = 'check';
   $check.setAttribute('type', 'checkbox');
-  // $check.setAttribute('name', 'itemId');
-  // $check.setAttribute('value', 'itemId');
   $check.id = entry.id;
   const $caught = document.createElement('span');
   $caught.className = 'caught-check';
@@ -73,7 +72,7 @@ function createCatchItem(entry) {
 const $catchList = document.getElementById('catch-entries'); // the ul element that list items get appended to
 function setCatchList() {
   // remove any items that are already set
-    $catchList.innerHTML = '';
+  $catchList.innerHTML = '';
   if (data.catchList.length === 0) {
     // create $message element and append to $catchlist
     const $message = document.createElement('p');
@@ -95,11 +94,11 @@ function setCatchList() {
 const viewsList = document.querySelectorAll('[data-view]');
 
 function changeView(view) {
-  // console.log('viewsList', viewsList)
   data.view = view;
   if (data.view === 'list') {
     setCatchList();
   }
+  // hide all other views
   for (let i = 0; i < viewsList.length; i++) {
     const $view = viewsList[i];
     if ($view.getAttribute('data-view') === data.view) {
@@ -117,12 +116,14 @@ document.addEventListener('DOMContentLoaded', e => {
     data = JSON.parse(dataJSON);
     changeView('find');
   }
+  $editModal.showModal();
 });
 
-window.addEventListener('beforeunload', ()=> {
+window.addEventListener('beforeunload', () => {
   data.creature = null;
   data.type = null;
   data.view = 'find';
+  data.editing = null;
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('dataJSON', dataJSON);
 });

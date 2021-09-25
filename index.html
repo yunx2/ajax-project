@@ -46,7 +46,7 @@
           <div class="">
             <input name="text-input" class="find-input beige-bg" type="text" placeholder="Enter creature name">
           </div>
-          <div class="find-buttons"><button id="find" class="btn" type="button">Find</button>
+          <div class="buttons"><button id="find" class="btn" type="button">Find</button>
             <button id="btn-catch" type="button">View To-Catch List</button></div>
         </form>
       </div>
@@ -66,11 +66,15 @@
         </div>
       </div>
     </div>
-    <dialog>
-      <p id="confirm"></p>
-      <div class="delete-buttons">
-        <button id="btn-delete">Remove</button>
-        <button id="btn-undo">Undo</button>
+    <dialog class="modal" id="edit-view">
+      <!-- <h1 id="edited-creature"></h1> -->
+      <label>
+        <p id="">Comments:</p>
+        <textarea class="comment-text"></textarea>
+      </label>
+      <div class="buttons">
+        <button class="btn-edit" type="button" id="btn-cancel">Cancel</button>
+        <button class="btn-edit" type="button" id="btn-done">Done</button>
       </div>
     </dialog>
     <!-- result view -->

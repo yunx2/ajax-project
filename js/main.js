@@ -32,7 +32,7 @@ function handleCheck(e) {
   // $toDelete.classList.add('hidden');
   // const $confirm = document.getElementById('confirm');
   // $confirmDelete.showModal();
-  console.log('$toDelete:', $toDelete);
+  // console.log('$toDelete:', $toDelete);
 }
 
 $catchList.addEventListener('input', e => handleCheck(e));
