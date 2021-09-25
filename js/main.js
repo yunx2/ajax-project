@@ -13,6 +13,21 @@ const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
 const $editButtonsContainer = document.getElementById('edit-buttons');
 
+$catchList.addEventListener('click', e => {
+  // console.log('target tagname:', e.target.tagName)
+  if (e.target.tagName === 'I' || e.target.tagName === 'BUTTON') {
+    // console.log('clicked button');
+    $editModal.showModal();
+    const $closest = e.target.closest('li');
+    console.log('closest li:', $closest)
+  }
+
+// else {
+//  console.log('didn\'t click button')
+// }
+})
+
+
 $editButtonsContainer.addEventListener('click', e => {
   // console.log('event tagname:', e.target.tagName)
   if (e.target.tagName !== 'BUTTON') {

@@ -9,7 +9,7 @@ let data = {
   nextId: 1,
   // editing: null
 };
-
+const $catchList = document.getElementById('catch-entries'); // the ul element that list items get appended to
 const $editModal = document.getElementById('edit-view');
 
 function createCatchItem(entry) {
@@ -69,7 +69,7 @@ function createCatchItem(entry) {
   // console.log($li);
   return $li;
 }
-const $catchList = document.getElementById('catch-entries'); // the ul element that list items get appended to
+
 function setCatchList() {
   // remove any items that are already set
   $catchList.innerHTML = '';
