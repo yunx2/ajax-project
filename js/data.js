@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', e => {
     data = JSON.parse(dataJSON);
     changeView('list');
   }
-  // $editModal.showModal();
 });
 
 window.addEventListener('beforeunload', () => {
