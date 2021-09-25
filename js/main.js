@@ -11,6 +11,20 @@ const $detailsAdd = document.getElementById('add-details');
 const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
+const $editButtonsContainer = document.getElementById('edit-buttons');
+
+$editButtonsContainer.addEventListener('click', e => {
+  // console.log('event tagname:', e.target.tagName)
+  if (e.target.tagName !== 'BUTTON') {
+    // console.log('not button')
+    return;
+  }
+  if (e.target.id === 'btn-cancel') {
+    $editModal.close();
+  } else {
+
+  }
+});
 // const $confirmDelete = document.querySelector('dialog');
 // const $undo = document.getElementById('btn-undo');
 // const $delete = document.getElementById('btn-delete');

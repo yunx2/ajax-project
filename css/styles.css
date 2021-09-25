@@ -94,6 +94,10 @@ main {
   color: #a0702d;
 }
 
+.find-input:focus {
+  outline-color: #6ECB63;
+}
+
 .btn {
   border-radius: 5px;
   margin-top: 20px;
@@ -124,6 +128,10 @@ select {
   background-color: #fbf4e9;
   color: #a0702d;
   border-radius: 5px;
+}
+
+select:focus {
+  outline-color: #6ECB63;
 }
 
 .full-width {
