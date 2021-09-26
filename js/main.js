@@ -12,28 +12,29 @@ const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
 const $editButtonsContainer = document.getElementById('edit-buttons');
-
-function handleEdit(element) {
-  const catchListItem = data.catchList.find(item => item.id == data.editing);
-   console.log('editing:', catchListItem);
-}
+const $comment = document.querySelector('.comment-text');
 
 $catchList.addEventListener('click', e => {
   // console.log('target tagname:', e.target.tagName)
   if (e.target.tagName === 'I' || e.target.tagName === 'BUTTON') {
-    // console.log('clicked button');
-    $editModal.showModal();
     const $closest = e.target.closest('li');
-    // console.log('closest li:', $closest);
     data.editing = $closest.getAttribute('data-id');
     // console.log('closest id:', id);
-    handleEdit()
+    const catchListItem = data.catchList.find(item => item.id == data.editing);
+    // console.log('text area:', $comment);
+    $comment.value = 'comment comment'
+    // determine if editing comment or adding comment
+    if (catchListItem.comment) {
+      $comment.value = catchListItem.comment;
+    }
+    $editModal.showModal();
   }
-// else {
-//  console.log('didn\'t click button')
-// }
 });
 
+function handleEdit(element) {
+  // saves value of comment to data and changes dom to match
+  $editModal.close();
+}
 
 $editButtonsContainer.addEventListener('click', e => {
   // console.log('event tagname:', e.target.tagName)
@@ -41,10 +42,7 @@ $editButtonsContainer.addEventListener('click', e => {
     // console.log('not button')
     return;
   }
-  if (e.target.id === 'btn-cancel') {
-    $editModal.close();
-    return;
-  }
+  handleEdit();
 });
 // const $confirmDelete = document.querySelector('dialog');
 // const $undo = document.getElementById('btn-undo');
