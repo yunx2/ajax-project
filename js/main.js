@@ -22,7 +22,10 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
     data.editing = data.catchList.find(item => item.id == itemId);
     // determine if editing comment or adding comment
     if (data.editing.comment) {
+      // console.log('this shoulve have a comment:', data.editing)
       $comment.value = data.editing.comment;
+    } else {
+      $comment.value = null;
     }
     $editModal.showModal();
   }
@@ -43,18 +46,21 @@ function removeFromCatchList(id) {
 }
 
 function handleEdit() {
-  // set new comment value
-  data.editing.comment = $comment.value;
-  // find and remove from catchList
-  const newCatchList = removeFromCatchList(data.editing.id)
-  newCatchList.unshift(data.editing);
-  data.catchList = newCatchList;
-  console.log('data.catchList:', newCatchList);
-  const $edited = createCatchItem(data.editing);
-  // change DOM to reflect changes in data.
-  const $original = document.querySelector(`[data-id='${data.editing.id}']`);
-  $original.remove();
-  $catchList.prepend($edited);
+  // only do edit things if the comment has been changed
+  if (data.editing.comment !== $comment.value) {
+    // set new comment value
+    data.editing.comment = $comment.value;
+    // find and remove from catchList
+    const newCatchList = removeFromCatchList(data.editing.id)
+    newCatchList.unshift(data.editing);
+    data.catchList = newCatchList;
+    console.log('data.catchList:', newCatchList);
+    const $edited = createCatchItem(data.editing);
+    // change DOM to reflect changes in data.
+    const $original = document.querySelector(`[data-id='${data.editing.id}']`);
+    $original.remove();
+    $catchList.prepend($edited);
+  }
   data.editing = null;
 }
 
