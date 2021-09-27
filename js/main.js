@@ -14,36 +14,46 @@ const $notifications = document.getElementById('notifications');
 const $editButtonsContainer = document.getElementById('edit-buttons');
 const $comment = document.querySelector('.comment-text');
 
-$catchList.addEventListener('click', e => {
-  // console.log('target tagname:', e.target.tagName)
+$catchList.addEventListener('click', e => { // prepopulate text area if comment exists; open edit modal
   if (e.target.tagName === 'I' || e.target.tagName === 'BUTTON') {
     const $closest = e.target.closest('li');
-    data.editing = $closest.getAttribute('data-id');
-    // console.log('closest id:', id);
-    const catchListItem = data.catchList.find(item => item.id == data.editing);
-    // console.log('text area:', $comment);
-    $comment.value = 'comment comment'
+    const itemId = $closest.getAttribute('data-id');
+    data.editing = data.catchList.find(item => item.id == itemId);
     // determine if editing comment or adding comment
-    if (catchListItem.comment) {
-      $comment.value = catchListItem.comment;
+    if (data.editing.comment) {
+      $comment.value = data.editing.comment;
     }
     $editModal.showModal();
   }
 });
 
-function handleEdit(element) {
-  // saves value of comment to data and changes dom to match
-  $editModal.close();
+function handleEdit() {
+  // set new comment value
+  data.editing.comment = $comment.value;
+  // find and replace in catchList
+  data.catchList = data.catchList.map(item => {
+    if (item.id == data.editing.id) {
+      return data.editing;
+    }
+    return item;
+  });
 }
 
 $editButtonsContainer.addEventListener('click', e => {
-  // console.log('event tagname:', e.target.tagName)
+  // only respond to button clicks
   if (e.target.tagName !== 'BUTTON') {
     // console.log('not button')
     return;
   }
-  handleEdit();
+  // do edit things
+  if (e.target.id === 'btn-done'){
+    handleEdit();
+    data.editing = null;
+  }
+  // close modal if either button clicked
+  $editModal.close();
 });
+
 // const $confirmDelete = document.querySelector('dialog');
 // const $undo = document.getElementById('btn-undo');
 // const $delete = document.getElementById('btn-delete');
