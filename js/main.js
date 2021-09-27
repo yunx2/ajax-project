@@ -44,20 +44,16 @@ function removeFromCatchList(id) {
 function handleEdit() {
   // set new comment value
   data.editing.comment = $comment.value;
-  // console.log('afterEdit', data.editing)
   // find and remove from catchList
   const newCatchList = removeFromCatchList(data.editing.id)
-  // console.log('newCatchList:', newCatchList)
   newCatchList.unshift(data.editing);
-  // console.log('new list', newCatchList);
   data.catchList = newCatchList;
-  console.log('data.catchList:', newCatchList)
+  console.log('data.catchList:', newCatchList);
   const $edited = createCatchItem(data.editing);
   // change DOM to reflect changes in data.
-  // const $original = document.querySelector(`[data-id='${data.editing.id}']`);
-  // const $edited = createCatchItem(data.editing);
-  // console.log('edited list element', $edited);
-  // $original.replaceWith($edited);
+  const $original = document.querySelector(`[data-id='${data.editing.id}']`);
+  $original.remove();
+  $catchList.prepend($edited);
 }
 
 $editButtonsContainer.addEventListener('click', e => {
@@ -73,6 +69,7 @@ $editButtonsContainer.addEventListener('click', e => {
   data.editing = null;
   // close modal
   $editModal.close();
+  $catchList.scrollIntoView();
 });
 
 // const $confirmDelete = document.querySelector('dialog');
