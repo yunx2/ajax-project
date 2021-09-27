@@ -37,20 +37,24 @@ function handleEdit() {
     }
     return item;
   });
+  // change DOM to reflect changes in data.
+  const $original = document.querySelector(`[data-id='${data.editing.id}']`);
+  const $edited = createCatchItem(data.editing);
+  // console.log('edited list element', $edited);
+  $original.replaceWith($edited);
 }
 
 $editButtonsContainer.addEventListener('click', e => {
   // only respond to button clicks
   if (e.target.tagName !== 'BUTTON') {
-    // console.log('not button')
     return;
   }
   // do edit things
-  if (e.target.id === 'btn-done'){
+  if (e.target.id === 'btn-done') {
     handleEdit();
     data.editing = null;
   }
-  // close modal if either button clicked
+  // close modal
   $editModal.close();
 });
 

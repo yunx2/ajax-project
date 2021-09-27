@@ -53,7 +53,8 @@ function createCatchItem(entry) {
   $topRow.append($leftCol, $midCol, $rightCol);
 
   const $bottomRow = document.createElement('div');
-  $bottomRow.className = 'row';
+  $bottomRow.classList.add('row');
+  $bottomRow.classList.add('bottom-row');
   const $commentsRow = document.createElement('div');
   $commentsRow.classList.add('column-full');
   $commentsRow.classList.add('comments-row');
@@ -65,6 +66,11 @@ function createCatchItem(entry) {
   $button.className = 'icon-edit';
   $button.innerHTML = '<i class="fas fa-pen"></i>';
   $commentsRow.append($comments, $button);
+  if (entry.comment) {
+    const $content = document.createElement('div');
+    $content.textContent = entry.comment;
+    $bottomRow.append($content);
+  }
   $li.append($topRow, $bottomRow);
   // console.log($li);
   return $li;
