@@ -27,21 +27,37 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
   }
 });
 
+function removeFromCatchList(id) {
+  const copy = data.catchList.slice();
+  let index;
+  for (let i = 0; i < copy.length; i++) {
+    const item = copy[i];
+    if (item.id == id) {
+      index = i;
+      break;
+    }
+  }
+  copy.splice(index, 1);
+  return copy;
+}
+
 function handleEdit() {
   // set new comment value
   data.editing.comment = $comment.value;
-  // find and replace in catchList
-  data.catchList = data.catchList.map(item => {
-    if (item.id == data.editing.id) {
-      return data.editing;
-    }
-    return item;
-  });
-  // change DOM to reflect changes in data.
-  const $original = document.querySelector(`[data-id='${data.editing.id}']`);
+  // console.log('afterEdit', data.editing)
+  // find and remove from catchList
+  const newCatchList = removeFromCatchList(data.editing.id)
+  // console.log('newCatchList:', newCatchList)
+  newCatchList.unshift(data.editing);
+  // console.log('new list', newCatchList);
+  data.catchList = newCatchList;
+  console.log('data.catchList:', newCatchList)
   const $edited = createCatchItem(data.editing);
+  // change DOM to reflect changes in data.
+  // const $original = document.querySelector(`[data-id='${data.editing.id}']`);
+  // const $edited = createCatchItem(data.editing);
   // console.log('edited list element', $edited);
-  $original.replaceWith($edited);
+  // $original.replaceWith($edited);
 }
 
 $editButtonsContainer.addEventListener('click', e => {
@@ -52,8 +68,9 @@ $editButtonsContainer.addEventListener('click', e => {
   // do edit things
   if (e.target.id === 'btn-done') {
     handleEdit();
-    data.editing = null;
+
   }
+  data.editing = null;
   // close modal
   $editModal.close();
 });
