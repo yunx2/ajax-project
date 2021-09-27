@@ -55,6 +55,7 @@ function handleEdit() {
   const $original = document.querySelector(`[data-id='${data.editing.id}']`);
   $original.remove();
   $catchList.prepend($edited);
+  data.editing = null;
 }
 
 $editButtonsContainer.addEventListener('click', e => {
@@ -65,9 +66,7 @@ $editButtonsContainer.addEventListener('click', e => {
   // do edit things
   if (e.target.id === 'btn-done') {
     handleEdit();
-
   }
-  data.editing = null;
   // close modal
   $editModal.close();
   $catchList.scrollIntoView();
@@ -279,8 +278,7 @@ function handleFind(e) {
 
   const noSpaces = name.replaceAll(' ', '_');
   data.creature = noSpaces.replaceAll("'", '');
-  console.log('data.creature:', data.creature)
-  // console.log('creature type:', data.type, 'creature:', data.creature)
+
   // remove previous results from results view
   $resultImg.setAttribute('src', null);
   $resultImg.setAttribute('alt', null);
