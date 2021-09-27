@@ -7,10 +7,9 @@ let data = {
   type: '',
   catchList: [],
   nextId: 1,
-  // editing: null
+  editing: null
 };
 const $catchList = document.getElementById('catch-entries'); // the ul element that list items get appended to
-const $editModal = document.getElementById('edit-view');
 
 function createCatchItem(entry) {
   const $li = document.createElement('li');
@@ -120,7 +119,7 @@ document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
     data = JSON.parse(dataJSON);
-    changeView('list');
+    changeView('find');
   }
 });
 

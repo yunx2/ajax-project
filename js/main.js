@@ -13,6 +13,7 @@ const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
 const $editButtonsContainer = document.getElementById('edit-buttons');
 const $comment = document.querySelector('.comment-text');
+const $editModal = document.getElementById('edit-view');
 
 $catchList.addEventListener('click', e => { // prepopulate text area if comment exists; open edit modal
   if (e.target.tagName === 'I' || e.target.tagName === 'BUTTON') {
@@ -108,7 +109,6 @@ $catchListButton.addEventListener('click', () => {
 
 function isAdded() {
   const catchItem = data.catchList.find(item => item.creatureName === data.displayName);
-  // console.log('item:', catchItem);
   return Boolean(catchItem);
 }
 
@@ -255,7 +255,17 @@ request.addEventListener('load', e => {
     changeView('result');
   } else {
     // show not found message
-    $message.textContent = `No information about '${data.creature}'. Try again.`;
+    let type;
+    if (data.type === 'bugs') {
+      type = 'bug';
+    }
+    if (data.type === 'sea') {
+      type = 'sea creature';
+    }
+    if (data.type === 'fish') {
+      type = 'fish';
+    }
+    $message.textContent = `No information about the ${type} '${data.creature}'. Try again.`;
   }
   $form.reset();
 });
@@ -266,7 +276,10 @@ function handleFind(e) {
   const $textControl = $form.elements['text-input'];
   data.type = $selectControl.value;
   const name = $textControl.value.toLowerCase();
-  data.creature = name.replaceAll(' ', '_');
+
+  const noSpaces = name.replaceAll(' ', '_');
+  data.creature = noSpaces.replaceAll("'", '');
+  console.log('data.creature:', data.creature)
   // console.log('creature type:', data.type, 'creature:', data.creature)
   // remove previous results from results view
   $resultImg.setAttribute('src', null);
