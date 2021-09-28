@@ -263,7 +263,7 @@ function handleFind(e) {
   const $textControl = $form.elements['text-input'];
   data.type = $selectControl.value;
   const name = $textControl.value.toLowerCase();
-  const noSpaces = name.replace(' ', '_');
+  const noSpaces = name.replaceAll(' ', '_');
   data.creature = noSpaces.replaceAll("'", '');
 
   // remove previous results from results view
