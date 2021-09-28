@@ -121,14 +121,14 @@ document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
     data = JSON.parse(dataJSON);
-    changeView('find');
+    changeView('list');
   }
 });
 
 window.addEventListener('beforeunload', () => {
   data.creature = null;
   data.type = null;
-  data.view = 'find';
+  // data.view = 'list';
   data.editing = null;
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('dataJSON', dataJSON);

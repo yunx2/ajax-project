@@ -257,7 +257,6 @@ li {
   width: 15px;
   height: 15px;
   border-radius: 4px;
-  /* background: #a0702d; */
 }
 
 .modal {
@@ -286,4 +285,8 @@ li {
 
 .select-label {
   padding-left: 0.5rem;
+}
+
+.confirm-buttons {
+
 }

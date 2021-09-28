@@ -14,6 +14,7 @@ const $notifications = document.getElementById('notifications');
 const $editButtonsContainer = document.getElementById('edit-buttons');
 const $comment = document.querySelector('.comment-text');
 const $editModal = document.getElementById('edit-view');
+const $confirmModal = document.getElementById('confirm-view');
 
 $catchList.addEventListener('click', e => { // prepopulate text area if comment exists; open edit modal
   if (e.target.tagName === 'I' || e.target.tagName === 'BUTTON') {
@@ -79,6 +80,7 @@ $editButtonsContainer.addEventListener('click', e => {
 });
 
 function handleCheck(e) {
+  $confirmModal.showModal();
   const $toDelete = document.querySelector(`[data-id='${e.target.id}']`);
   $toDelete.remove();
   data.catchList = data.catchList.filter(item => item.id != e.target.id);
