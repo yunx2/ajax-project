@@ -257,19 +257,13 @@ request.addEventListener('load', e => {
   $form.reset();
 });
 
-function formatTerm(str) {
-  let noSpaces = name.replaceAll(' ', '_');
-
-}
-
 function handleFind(e) {
   // console.log('target',e.target)
   const $selectControl = $form.elements.select;
   const $textControl = $form.elements['text-input'];
   data.type = $selectControl.value;
   const name = $textControl.value.toLowerCase();
-  formatTime(name);
-
+  const noSpaces = name.replace(' ', '_');
   data.creature = noSpaces.replaceAll("'", '');
 
   // remove previous results from results view
