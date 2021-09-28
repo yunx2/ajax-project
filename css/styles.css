@@ -283,3 +283,7 @@ li {
   background-color: #fbf4e9;
   color: #a0702d;
 }
+
+.select-label {
+  padding-left: 0.5rem;
+}
