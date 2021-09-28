@@ -67,10 +67,12 @@ function createCatchItem(entry) {
   $commentsRow.append($comments, $button);
   if (entry.comment) {
     const $content = document.createElement('div');
+    $content.className = 'column-full';
     $content.textContent = entry.comment;
     $bottomRow.append($content);
   }
   $li.append($topRow, $bottomRow);
+
   // console.log($li);
   return $li;
 }
