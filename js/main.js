@@ -11,28 +11,77 @@ const $detailsAdd = document.getElementById('add-details');
 const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
-// const $confirmDelete = document.querySelector('dialog');
-// const $undo = document.getElementById('btn-undo');
-// const $delete = document.getElementById('btn-delete');
+const $editButtonsContainer = document.getElementById('edit-buttons');
+const $comment = document.querySelector('.comment-text');
+const $editModal = document.getElementById('edit-view');
 
-// $undo.addEventListener('click', e => {
+$catchList.addEventListener('click', e => { // prepopulate text area if comment exists; open edit modal
+  if (e.target.tagName === 'I' || e.target.tagName === 'BUTTON') {
+    const $closest = e.target.closest('li');
+    const itemId = $closest.getAttribute('data-id');
+    data.editing = data.catchList.find(item => item.id == itemId);
+    // determine if editing comment or adding comment
+    if (data.editing.comment) {
+      // console.log('this shoulve have a comment:', data.editing)
+      $comment.value = data.editing.comment;
+    } else {
+      $comment.value = null;
+    }
+    $editModal.showModal();
+  }
+});
 
-//   $confirmDelete.close();
-// })
+function removeFromCatchList(id) {
+  const copy = data.catchList.slice();
+  let index;
+  for (let i = 0; i < copy.length; i++) {
+    const item = copy[i];
+    if (item.id == id) {
+      index = i;
+      break;
+    }
+  }
+  copy.splice(index, 1);
+  return copy;
+}
+
+function handleEdit() {
+  // only do edit things if the comment has been changed
+  if (data.editing.comment !== $comment.value) {
+    // set new comment value
+    data.editing.comment = $comment.value;
+    // find and remove from catchList
+    const newCatchList = removeFromCatchList(data.editing.id)
+    newCatchList.unshift(data.editing);
+    data.catchList = newCatchList;
+    console.log('data.catchList:', newCatchList);
+    const $edited = createCatchItem(data.editing);
+    // change DOM to reflect changes in data.
+    const $original = document.querySelector(`[data-id='${data.editing.id}']`);
+    $original.remove();
+    $catchList.prepend($edited);
+  }
+  data.editing = null;
+}
+
+$editButtonsContainer.addEventListener('click', e => {
+  // only respond to button clicks
+  if (e.target.tagName !== 'BUTTON') {
+    return;
+  }
+  // do edit things
+  if (e.target.id === 'btn-done') {
+    handleEdit();
+  }
+  // close modal
+  $editModal.close();
+  $catchList.scrollIntoView();
+});
 
 function handleCheck(e) {
   const $toDelete = document.querySelector(`[data-id='${e.target.id}']`);
-  // data.editing = e.target.getAttribute('data-id');
-  // console.log(data.editing)
-  // document.getElementById('confirm').textContent = `Remove ${$toDelete.getAttribute('data-creature')}?`;
-  // $confirmDelete.showModal();
   $toDelete.remove();
   data.catchList = data.catchList.filter(item => item.id != e.target.id);
-  // console.log('list after delele:', data.catchList)
-  // $toDelete.classList.add('hidden');
-  // const $confirm = document.getElementById('confirm');
-  // $confirmDelete.showModal();
-  console.log('$toDelete:', $toDelete);
 }
 
 $catchList.addEventListener('input', e => handleCheck(e));
@@ -47,7 +96,6 @@ $catchListButton.addEventListener('click', () => {
 
 function isAdded() {
   const catchItem = data.catchList.find(item => item.creatureName === data.displayName);
-  // console.log('item:', catchItem);
   return Boolean(catchItem);
 }
 
@@ -194,10 +242,25 @@ request.addEventListener('load', e => {
     changeView('result');
   } else {
     // show not found message
-    $message.textContent = `No information about '${data.creature}'. Try again.`;
+    let type;
+    if (data.type === 'bugs') {
+      type = 'bug';
+    }
+    if (data.type === 'sea') {
+      type = 'sea creature';
+    }
+    if (data.type === 'fish') {
+      type = 'fish';
+    }
+    $message.textContent = `No information about the ${type} '${data.creature}'. Try again.`;
   }
   $form.reset();
 });
+
+function formatTerm(str) {
+  let noSpaces = name.replaceAll(' ', '_');
+
+}
 
 function handleFind(e) {
   // console.log('target',e.target)
@@ -205,8 +268,10 @@ function handleFind(e) {
   const $textControl = $form.elements['text-input'];
   data.type = $selectControl.value;
   const name = $textControl.value.toLowerCase();
-  data.creature = name.replaceAll(' ', '_');
-  // console.log('creature type:', data.type, 'creature:', data.creature)
+  formatTime(name);
+
+  data.creature = noSpaces.replaceAll("'", '');
+
   // remove previous results from results view
   $resultImg.setAttribute('src', null);
   $resultImg.setAttribute('alt', null);

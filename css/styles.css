@@ -94,6 +94,10 @@ main {
   color: #a0702d;
 }
 
+.find-input:focus {
+  outline-color: #6ECB63;
+}
+
 .btn {
   border-radius: 5px;
   margin-top: 20px;
@@ -124,6 +128,10 @@ select {
   background-color: #fbf4e9;
   color: #a0702d;
   border-radius: 5px;
+}
+
+select:focus {
+  outline-color: #6ECB63;
 }
 
 .full-width {
@@ -195,16 +203,17 @@ select {
   align-items: center;
 }
 
-.btn-edit {
+.icon-edit {
   color:  #6ECB63;
   background-color: #fbf4e9;
   border: none;
 }
 
 li {
-  width: 50%;
+  width: 60%;
   border: 3px solid #6ECB63;
   margin-bottom: 10px;
+  padding: 0 1.5rem;
 }
 
 .comments-row {
@@ -212,7 +221,7 @@ li {
   justify-content: space-between;
 }
 
-.find-buttons {
+.buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -248,5 +257,33 @@ li {
   width: 15px;
   height: 15px;
   border-radius: 4px;
-  background: #a0702d;
+  /* background: #a0702d; */
+}
+
+.modal {
+  width: 300px;
+  border: 5px solid #a0702d;
+  background-color: #fbf4e9;
+}
+
+.comment-text {
+  font-family: 'Open Sans', sans-serif;
+  border: 2px solid #a0702d;;
+  background-color: #fbf4e9;
+  margin-bottom: 15px;
+  width: 220px;
+}
+
+.comment-text:focus {
+  outline-color: #6ECB63;
+}
+
+.btn-edit {
+  border: none;
+  background-color: #fbf4e9;
+  color: #a0702d;
+}
+
+.select-label {
+  padding-left: 0.5rem;
 }
