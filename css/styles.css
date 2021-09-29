@@ -111,8 +111,14 @@ header {
   font-size: 18px;
   color: #a0702d;
 }
-
+/*
 .btn:hover {
+  background-color: #31993f;
+  color: #6ECB63;
+  border-color:#6ECB63;
+} */
+
+.btn:active {
   transform: translateY(0.25rem);
 }
 

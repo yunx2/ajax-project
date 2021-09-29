@@ -114,6 +114,17 @@ function changeView(view) {
   }
 }
 
+function setState(catchList = [], view = 'find') {
+  data = {
+    view,
+    catchList,
+    nextId: catchList.length + 1
+  };
+  const stateJSON = JSON.stringify(data);
+  localStorage.setItem('dataJSON', stateJSON);
+  window.location.reload();
+}
+
 document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
@@ -129,14 +140,3 @@ window.addEventListener('beforeunload', () => {
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('dataJSON', dataJSON);
 });
-
-function setState(catchList = [], view = 'find') {
-  data = {
-    view,
-    catchList,
-    nextId: catchList.length + 1
-  };
-  const stateJSON = JSON.stringify(data);
-  localStorage.setItem('dataJSON', stateJSON);
-  window.location.reload();
-}
