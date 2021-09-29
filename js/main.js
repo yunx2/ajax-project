@@ -15,6 +15,7 @@ const $editButtonsContainer = document.getElementById('edit-buttons');
 const $comment = document.querySelector('.comment-text');
 const $editModal = document.getElementById('edit-view');
 const $confirmModal = document.getElementById('confirm-view');
+const $confirmButtons = document.getElementById('confirm-buttons');
 
 $catchList.addEventListener('click', e => { // prepopulate text area if comment exists; open edit modal
   if (e.target.tagName === 'I' || e.target.tagName === 'BUTTON') {
@@ -79,14 +80,35 @@ $editButtonsContainer.addEventListener('click', e => {
   $catchList.scrollIntoView();
 });
 
-function handleCheck(e) {
-  $confirmModal.showModal();
-  const $toDelete = document.querySelector(`[data-id='${e.target.id}']`);
-  $toDelete.remove();
-  data.catchList = data.catchList.filter(item => item.id != e.target.id);
+function handleCheck({ target }) {
+  if (target.tagName !== 'BUTTON') {
+    // ignore anything that's not a button
+    return;
+  }
+  const $toDelete = data.editing;
+  const id = $toDelete.getAttribute('data-id');
+  if (target.id === 'confirm-delete') {
+    // do delete things
+    $toDelete.remove();
+    data.catchList = data.catchList.filter(item => item.id != id);
+  } else {
+    // uncheck checkbox
+    document.getElementById(id).checked = false;
+  }
+  data.editing = null;
+  $confirmModal.close();
 }
+$confirmButtons.addEventListener('click', e => handleCheck(e));
 
-$catchList.addEventListener('input', e => handleCheck(e));
+$catchList.addEventListener('input', e => {
+  const $toDelete = document.querySelector(`[data-id='${e.target.id}']`);
+  const creatureName = $toDelete.getAttribute('data-creature');
+  const $text = document.querySelector('.confirm-text');
+  $text.textContent = `Remove ${creatureName} from the To-Catch list?`;
+  $confirmModal.showModal();
+  data.editing = $toDelete;
+  // console.dir($toDelete)
+});
 
 $headingButton.addEventListener('click', () => {
   changeView('find');
