@@ -244,8 +244,47 @@ function capitalizeInitial(str) {
 
 const $spinner = document.getElementById('spinner');
 
+function setResultView() {
+  $resultImg.setAttribute('src', data.response.icon_uri);
+  $resultImg.setAttribute('alt', data.displayName);
+  $resultName.textContent = data.displayName;
+  const availableNorth = checkAvailability('northern');
+  const availableSouth = checkAvailability('southern');
+  displayAvailable(availableNorth, $north);
+  displayAvailable(availableSouth, $south);
+}
+
 const request = new XMLHttpRequest();
 request.responseType = 'json';
+
+function handleResponse(e) {
+  // hide spinner because response received
+  $spinner.classList.toggle('hidden');
+  data.response = request.response;
+  if (data.response) {
+    $message.textContent = null;
+    const creatureName = data.response.name['name-USen'];
+    data.displayName = capitalizeInitial(creatureName);
+    // set and change to result view
+    setResultView();
+    changeView('result');
+  }
+}
+
+function setMessage() {
+  let type;
+  if (data.type === 'bugs') {
+    type = 'bug';
+  }
+  if (data.type === 'sea') {
+    type = 'sea creature';
+  }
+  if (data.type === 'fish') {
+    type = 'fish';
+  }
+  $message.innerHTML = `No information found. Are you sure <span class="text-pink">${data.creature}</span> is a <span class="text-green">${type}</span>?`;
+}
+
 request.addEventListener('load', e => {
   // hide spinner because response received
   $spinner.classList.toggle('hidden');
@@ -253,32 +292,12 @@ request.addEventListener('load', e => {
   if (data.response) {
     // handle response
     $message.textContent = null;
-    const creatureName = data.response.name['name-USen'];
-    data.displayName = capitalizeInitial(creatureName);
-    // console.log('name USen', data.displayName);
-    $resultImg.setAttribute('src', data.response.icon_uri);
-    $resultImg.setAttribute('alt', data.displayName);
-    $resultName.textContent = creatureName.toUpperCase();
-    const availableNorth = checkAvailability('northern');
-    const availableSouth = checkAvailability('southern');
-    displayAvailable(availableNorth, $north);
-    displayAvailable(availableSouth, $south);
-    changeView('result');
+    handleResponse();
+    $form.reset();
   } else {
     // show not found message
-    let type;
-    if (data.type === 'bugs') {
-      type = 'bug';
-    }
-    if (data.type === 'sea') {
-      type = 'sea creature';
-    }
-    if (data.type === 'fish') {
-      type = 'fish';
-    }
-    $message.innerHTML = `No information found. Are you sure <span class="text-pink">${data.creature}</span> is a <span class="text-green">${type}</span>?`;
+    setMessage();
   }
-  $form.reset();
 });
 
 function handleFind(e) {
