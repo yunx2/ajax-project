@@ -2,6 +2,9 @@ main {
   font-family: 'Open Sans', sans-serif;
 }
 
+header {
+  border-bottom: 2px solid #a0702d;
+}
 .green-bg {
   background-color: #b1e693;
 }
@@ -55,10 +58,7 @@ main {
   font-family: 'Proza Libre', serif;
   width: 100%;
   text-align: center;
-}
-
-.page-header {
-  border-bottom: 1px solid #a0702d;;
+  font-size: 40px;
 }
 
 .font-proza {
@@ -117,9 +117,11 @@ main {
   width: 80px;
 }
 
+
 .btn-heading {
    background-color: #b1e693;
    border: none;
+   font-size: 20px;
 }
 
 select {
@@ -182,11 +184,11 @@ select:focus {
   justify-content: center;
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .select-label {
     justify-content: flex-end;
   }
-}
+} */
 
 #catch-entries {
   list-style-type: none;
