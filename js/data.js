@@ -16,7 +16,6 @@ function createCatchItem(entry) {
   // $li.classList.add('catch-item');
   $li.setAttribute('data-id', entry.id);
   $li.setAttribute('data-creature', entry.creatureName);
-  // console.log($li)
   const $topRow = document.createElement('div');
   $topRow.classList.add('row');
   $topRow.classList.add('top-row');
@@ -126,7 +125,6 @@ document.addEventListener('DOMContentLoaded', e => {
 window.addEventListener('beforeunload', () => {
   data.creature = null;
   data.type = null;
-  // data.view = 'list';
   data.editing = null;
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('dataJSON', dataJSON);
