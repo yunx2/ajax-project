@@ -167,7 +167,7 @@ select:focus {
 
 
 .bottom-row {
-  margin-bottom: 50px;
+  margin: 20px 0;
 }
 
 .img-bells {
@@ -295,4 +295,8 @@ li {
 
 .select-label {
   padding-left: 0.5rem;
+}
+
+.catch-item {
+  padding-top: 20px;
 }

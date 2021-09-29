@@ -13,7 +13,7 @@ const $catchList = document.getElementById('catch-entries'); // the ul element t
 
 function createCatchItem(entry) {
   const $li = document.createElement('li');
-  // $li.classList.add('catch-item');
+  $li.classList.add('catch-item');
   $li.setAttribute('data-id', entry.id);
   $li.setAttribute('data-creature', entry.creatureName);
   const $topRow = document.createElement('div');
