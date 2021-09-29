@@ -72,8 +72,6 @@ function createCatchItem(entry) {
     $bottomRow.append($content);
   }
   $li.append($topRow, $bottomRow);
-
-  // console.log($li);
   return $li;
 }
 
@@ -121,7 +119,7 @@ document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
     data = JSON.parse(dataJSON);
-    changeView('list');
+    changeView('find');
   }
 });
 

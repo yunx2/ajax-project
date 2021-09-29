@@ -1,4 +1,3 @@
-const $find = document.getElementById('find');
 const $form = document.getElementById('form');
 const $message = document.getElementById('message');
 const $north = document.getElementById('north');
@@ -24,7 +23,6 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
     data.editing = data.catchList.find(item => item.id == itemId);
     // determine if editing comment or adding comment
     if (data.editing.comment) {
-      // console.log('this shoulve have a comment:', data.editing)
       $comment.value = data.editing.comment;
     } else {
       $comment.value = null;
@@ -56,7 +54,7 @@ function handleEdit() {
     const newCatchList = removeFromCatchList(data.editing.id)
     newCatchList.unshift(data.editing);
     data.catchList = newCatchList;
-    console.log('data.catchList:', newCatchList);
+    // console.log('data.catchList:', newCatchList);
     const $edited = createCatchItem(data.editing);
     // change DOM to reflect changes in data.
     const $original = document.querySelector(`[data-id='${data.editing.id}']`);
@@ -107,7 +105,6 @@ $catchList.addEventListener('input', e => {
   $text.textContent = `Remove ${creatureName} from the To-Catch list?`;
   $confirmModal.showModal();
   data.editing = $toDelete;
-  // console.dir($toDelete)
 });
 
 $headingButton.addEventListener('click', () => {
@@ -131,7 +128,7 @@ function showNotification(message) {
 function handleAdd() {
   // if creature already in catchList return
   if (isAdded()) {
-    console.log('already in list');
+    // console.log('already in list');
     const msg = `${data.displayName} already added`;
     showNotification(msg);
     return;
@@ -282,11 +279,11 @@ request.addEventListener('load', e => {
 });
 
 function handleFind(e) {
-  // console.log('target',e.target)
-  const $selectControl = $form.elements.select;
-  const $textControl = $form.elements['text-input'];
+  e.preventDefault();
+  const $selectControl = e.target.elements.select;
+  const $textControl = e.target.elements['text-input'];
   data.type = $selectControl.value;
-  const name = $textControl.value.toLowerCase();
+  const name = $textControl.value.trim().toLowerCase();
   const noSpaces = name.replaceAll(' ', '_');
   data.creature = noSpaces.replaceAll("'", '');
 
@@ -299,4 +296,4 @@ function handleFind(e) {
   request.send();
 }
 
-$find.addEventListener('click', e => handleFind(e));
+$form.addEventListener('submit', e => handleFind(e));
