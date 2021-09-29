@@ -61,6 +61,19 @@ header {
   font-size: 40px;
 }
 
+@media screen and (max-width: 600px) {
+  .page-heading-text {
+    font-size: 34px;
+  }
+}
+
+/* @media screen and (max-width: 400px) {
+  .page-heading-text {
+  font-size: 28px;
+  }
+} */
+
+
 .font-proza {
   font-family: 'Proza Libre', serif;
 }

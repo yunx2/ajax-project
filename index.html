@@ -18,16 +18,16 @@
   <!-- style applies to everything -->
   <link rel="stylesheet" href="css/styles.css">
   <!-- style for when viewport wider than 900px (desktop) -->
-  <link rel="stylesheet" media="screen and (min-width: 900px)" href="css/widescreen.css">
+  <!-- <link rel="stylesheet" media="screen and (min-width: 900px)" href="css/widescreen.css"> -->
   <!-- style for when viewport under 600px wide (tablet)-->
-  <link rel="stylesheet" media="screen and (max-width: 600px)" href="css/mediumScreen.css">
+  <!-- <link rel="stylesheet" media="screen and (max-width: 600px)" href="css/mediumScreen.css"> -->
    <!-- style for viewports under 350px (phones) -->
   <!-- <link rel="stylesheet" media="screen and (max-width: 350px" href="css/narrowScreen.css"> -->
 </head>
 <body class="beige-bg">
   <header class="row page-header">
     <div class="column-full flex justify-center green-bg">
-      <button type="button" id="btn-heading"class="btn-heading">
+      <button type="button" id="btn-heading" class="btn-heading">
         <h1 class="page-heading-text">Animal Crossing Creatures</h1>
       </button>
     </div>
@@ -143,18 +143,22 @@
       </div>
     </dialog>
     <!-- result view -->
-    <div class="row justify-center bottom-row" data-view="result" id="result-view">
-       <div class="column-full flex justify-center results">
-         <div class="row">
-           <button type="button" id="results-add" class="btn btn-add">Add</button>
-           <h1 id="result-name" class="font-proza"></h1>
-         </div>
-         <img class="result-image">
-         <p class="">Available to Catch Today</p>
-         <p>Northern Hemisphere: <span id="north" class="text-pink"></span></p>
-         <p>Southern Hemisphere: <span id="south" class="text-pink"></span></p>
-         <button id="details" class="btn btn-details" type="button">Details</button>
+    <div class="row flex bottom-row" data-view="result" id="result-view">
+
+
+       <div class="column-half">
+          <button type="button" id="results-add" class="btn btn-add">Add</button>
+          <h1 id="result-name" class="font-proza"></h1>
+          <img class="result-image">
+        </div>
+
+        <div class="column-half">
+          <p class="">Available to Catch Today</p>
+          <p>Northern Hemisphere: <span id="north" class="text-pink"></span></p>
+          <p>Southern Hemisphere: <span id="south" class="text-pink"></span></p>
        </div>
+       <div class="row"><button id="details" class="btn btn-details" type="button">Details</button></div>
+
     </div>
     <!-- details view -->
     <div class="row" data-view="details">
@@ -187,8 +191,9 @@
       </div>
     </div>
   </main>
+  <script src="js/helpers.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/helpers.js"></script>
+
 </body>
 </html>

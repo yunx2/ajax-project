@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', e => {
     data = JSON.parse(dataJSON);
     changeView('find');
   }
+  getResultView();
 });
 
 window.addEventListener('beforeunload', () => {
