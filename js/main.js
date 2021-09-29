@@ -51,7 +51,7 @@ function handleEdit() {
     // set new comment value
     data.editing.comment = $comment.value;
     // find and remove from catchList
-    const newCatchList = removeFromCatchList(data.editing.id)
+    const newCatchList = removeFromCatchList(data.editing.id);
     newCatchList.unshift(data.editing);
     data.catchList = newCatchList;
     // console.log('data.catchList:', newCatchList);
@@ -245,6 +245,8 @@ function capitalizeInitial(str) {
 const $spinner = document.getElementById('spinner');
 
 function setResultView() {
+  const creatureName = data.response.name['name-USen'];
+  data.displayName = capitalizeInitial(creatureName);
   $resultImg.setAttribute('src', data.response.icon_uri);
   $resultImg.setAttribute('alt', data.displayName);
   $resultName.textContent = data.displayName;
@@ -263,8 +265,6 @@ function handleResponse(e) {
   data.response = request.response;
   if (data.response) {
     $message.textContent = null;
-    const creatureName = data.response.name['name-USen'];
-    data.displayName = capitalizeInitial(creatureName);
     // set and change to result view
     setResultView();
     changeView('result');
