@@ -247,7 +247,8 @@ const $spinner = document.getElementById('spinner');
 const request = new XMLHttpRequest();
 request.responseType = 'json';
 request.addEventListener('load', e => {
-  // inside this event listener, guaranteed to have a response
+  // hide spinner because response received
+  $spinner.classList.toggle('hidden');
   data.response = request.response;
   if (data.response) {
     // handle response
@@ -263,7 +264,6 @@ request.addEventListener('load', e => {
     displayAvailable(availableNorth, $north);
     displayAvailable(availableSouth, $south);
     changeView('result');
-    $spinner.classList.toggle('hidden');
   } else {
     // show not found message
     let type;
@@ -276,26 +276,32 @@ request.addEventListener('load', e => {
     if (data.type === 'fish') {
       type = 'fish';
     }
-    $message.textContent = `No information about the ${type} '${data.creature}'. Try again.`;
+    $message.innerHTML = `No information found. Are you sure <span class="text-pink">${data.creature}</span> is a <span class="text-green">${type}</span>?`;
   }
   $form.reset();
 });
 
 function handleFind(e) {
   e.preventDefault();
+  $message.innerHTML = '';
   const $selectControl = e.target.elements.select;
   const $textControl = e.target.elements['text-input'];
-  data.type = $selectControl.value;
   const name = $textControl.value.trim().toLowerCase();
-  const noSpaces = name.replaceAll(' ', '_');
-  data.creature = noSpaces.replaceAll("'", '');
-  // remove previous results from results view
-  $resultImg.setAttribute('src', null);
-  $resultImg.setAttribute('alt', null);
-  $resultName.textContent = null;
-  // send request
-  request.open('GET', `https://acnhapi.com/v1/${data.type}/${data.creature}`);
-  request.send();
+  // check that text input isn't empty
+  if (name) {
+    data.type = $selectControl.value;
+    const noSpaces = name.replaceAll(' ', '_');
+    data.creature = noSpaces.replaceAll("'", '');
+    // remove previous results from results view
+    $resultImg.setAttribute('src', null);
+    $resultImg.setAttribute('alt', null);
+    $resultName.textContent = null;
+    // send request
+    request.open('GET', `https://acnhapi.com/v1/${data.type}/${data.creature}`);
+    request.send();
+  } else {
+    $spinner.classList.toggle('hidden');
+  }
 }
 
 $form.addEventListener('submit', e => {

@@ -68,6 +68,7 @@ header {
 .search-form {
   width: 80%;
   margin-top: 80px;
+  max-width: 650px;
 }
 
 .creature-select {
@@ -92,6 +93,8 @@ header {
 
 .find-input::placeholder {
   color: #a0702d;
+  font-family: 'Proza Libre';
+
 }
 
 .find-input:focus {
@@ -164,7 +167,6 @@ select:focus {
 .btn-add:active{
   transform: translateY(0.25rem);
 }
-
 
 .bottom-row {
   margin: 20px 0;
