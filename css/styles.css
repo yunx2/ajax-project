@@ -109,12 +109,12 @@ main {
   color: #a0702d;
 }
 
-.btn-details {
-  width: 80px;
+.btn:hover {
+  transform: translateY(0.25rem);
 }
 
-.btn-details:active {
-  transform: translateY(0.25rem);
+.btn-details {
+  width: 80px;
 }
 
 .btn-heading {
@@ -249,7 +249,11 @@ li {
   border: none;
 }
 
-#find:active {
+#btn-catch:hover {
+  color: #31993f;
+}
+
+#find:hover {
   transform: translateY(0.25rem);
 }
 
