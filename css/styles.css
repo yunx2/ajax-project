@@ -287,10 +287,10 @@ li {
   color: #a0702d;
 }
 
-.select-label {
-  padding-left: 0.5rem;
+.btn-edit:hover {
+  color: #473a09;
 }
 
-.confirm-buttons {
-
+.select-label {
+  padding-left: 0.5rem;
 }
