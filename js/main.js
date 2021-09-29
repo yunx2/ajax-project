@@ -242,6 +242,8 @@ function capitalizeInitial(str) {
   return capitalized.join(' ');
 }
 
+const $spinner = document.getElementById('spinner');
+
 const request = new XMLHttpRequest();
 request.responseType = 'json';
 request.addEventListener('load', e => {
@@ -261,6 +263,7 @@ request.addEventListener('load', e => {
     displayAvailable(availableNorth, $north);
     displayAvailable(availableSouth, $south);
     changeView('result');
+    $spinner.classList.toggle('hidden');
   } else {
     // show not found message
     let type;
@@ -286,7 +289,6 @@ function handleFind(e) {
   const name = $textControl.value.trim().toLowerCase();
   const noSpaces = name.replaceAll(' ', '_');
   data.creature = noSpaces.replaceAll("'", '');
-
   // remove previous results from results view
   $resultImg.setAttribute('src', null);
   $resultImg.setAttribute('alt', null);
@@ -296,4 +298,7 @@ function handleFind(e) {
   request.send();
 }
 
-$form.addEventListener('submit', e => handleFind(e));
+$form.addEventListener('submit', e => {
+  $spinner.classList.toggle('hidden');
+  handleFind(e);
+});
