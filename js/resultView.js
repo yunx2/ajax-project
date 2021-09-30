@@ -1,3 +1,6 @@
+const $north = document.getElementById('north');
+const $south = document.getElementById('south');
+
 function checkAvailability(hemisphere) {
   if (data.response.availability.isAllYear) {
     return true;

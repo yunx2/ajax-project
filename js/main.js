@@ -1,7 +1,6 @@
 const $form = document.getElementById('form');
 const $message = document.getElementById('message');
-const $north = document.getElementById('north');
-const $south = document.getElementById('south');
+
 const $resultName = document.getElementById('result-name');
 const $resultImg = document.querySelector('.result-image');
 const $details = document.getElementById('details');
@@ -140,7 +139,6 @@ function showNotification(message) {
 function handleAdd() {
   // if creature already in catchList return
   if (isAdded()) {
-    // console.log('already in list');
     const msg = `${data.displayName} already added`;
     showNotification(msg);
     return;
