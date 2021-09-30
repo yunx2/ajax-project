@@ -31,10 +31,13 @@ function createCatchItem(entry) {
   const $midCol = document.createElement('div');
   $midCol.classList.add('column-third');
   $midCol.classList.add('col-mid');
-  const $name = document.createElement('p');
-  $name.textContent = entry.creatureName;
-  $name.classList.add('list-item-title');
-  $midCol.append($name);
+
+  const $btn = document.createElement('button');
+  // const $name = document.createElement('p');
+  $btn.textContent = entry.creatureName;
+  $btn.classList.add('list-item-title');
+  // $btn.append($name);
+  $midCol.append($btn);
 
   const $rightCol = document.createElement('div');
   const $check = document.createElement('input');
@@ -120,7 +123,7 @@ document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
     data = JSON.parse(dataJSON);
-    changeView('find');
+    changeView('list');
   }
 });
 
