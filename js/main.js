@@ -301,14 +301,10 @@ request.addEventListener('load', e => {
 });
 
 function createUrl(type, creature) {
-  const name = creature.trim().toLowerCase();
-  // check that text input isn't empty
-  if (name) {
-    data.type = type;
-    const noSpaces = name.replaceAll(' ', '_');
-    data.creature = noSpaces.replaceAll("'", '');
-  }
-  return `https://acnhapi.com/v1/${data.type}/${data.creature}`;
+  const name = creature.toLowerCase();
+  data.type = type;
+  const noSpaces = name.replaceAll(' ', '_');
+  data.creature = noSpaces.replaceAll("'", '');
 }
 
 // api call made here
@@ -317,18 +313,24 @@ function handleFind(e) {
   $message.innerHTML = '';
   const $selectControl = e.target.elements.select;
   const $textControl = e.target.elements['text-input'];
-  const endpoint = createUrl($selectControl.value, $textControl.value);
-  // remove previous results from results view
-  $resultImg.setAttribute('src', null);
-  $resultImg.setAttribute('alt', null);
-  $resultName.textContent = null;
-  // send request
-  request.open('GET', endpoint);
-  request.send();
-  $spinner.classList.toggle('hidden');
+  const textInput = $textControl.value.trim();
+  if (textInput) {
+    const endpoint = createUrl($selectControl.value, textInput);
+    // remove previous results from results view
+    $resultImg.setAttribute('src', null);
+    $resultImg.setAttribute('alt', null);
+    $resultName.textContent = null;
+    // send request
+    request.open('GET', endpoint);
+    request.send();
+  } else {
+  // hide spinner
+    $spinner.classList.toggle('hidden');
+  }
 }
 
 $form.addEventListener('submit', e => {
+  // show spinner
   $spinner.classList.toggle('hidden');
   handleFind(e);
 });

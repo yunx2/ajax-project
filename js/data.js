@@ -59,6 +59,7 @@ function createCatchItem(entry) {
   $bottomRow.append($commentsRow);
   const $comments = document.createElement('span');
   $comments.textContent = 'Comment:';
+  $comments.className = 'comments';
   const $button = document.createElement('button');
   $button.setAttribute('type', 'button');
   $button.className = 'icon-edit';
@@ -120,7 +121,6 @@ document.addEventListener('DOMContentLoaded', e => {
     data = JSON.parse(dataJSON);
     changeView('find');
   }
-  getResultView();
 });
 
 window.addEventListener('beforeunload', () => {
