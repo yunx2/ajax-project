@@ -35,7 +35,7 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
     const $closest = e.target.closest('li');
     const itemId = $closest.getAttribute('data-id');
     const creature = data.catchList.find(item => item.id == itemId);
-    console.log('creature:', creature)
+    // console.log('creature:', creature)
     if (e.target.className === 'list-item-title') {
       // switch to detail view
       data.response = creature.creatureData;
@@ -45,6 +45,7 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
       // do comment things
       data.editing = creature;
       // determine if editing comment or adding comment
+      // check if there is already a comment
       if (data.editing.comment) {
         $comment.value = data.editing.comment;
       } else {
@@ -145,7 +146,8 @@ function handleAdd() {
   const catchItem = {
     id: data.nextId,
     creatureName: data.displayName,
-    creatureData: data.response
+    creatureData: data.response,
+    comment: ''
   };
   data.nextId++;
   data.catchList.unshift(catchItem);

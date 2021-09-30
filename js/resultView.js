@@ -21,12 +21,9 @@ function displayAvailable(availability, node) {
 function capitalizeInitial(str) {
   const words = str.split(' ');
   const capitalized = [];
-  // console.log('words Array:', words);
   words.forEach(word => {
     const first = word[0].toUpperCase();
-    // console.log('word:', word);
     const rest = word.slice(1);
-    // console.log('sliced:', rest);
     capitalized.push(first + rest);
   });
   return capitalized.join(' ');
