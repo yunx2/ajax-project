@@ -261,7 +261,7 @@ request.responseType = 'json';
 
 function handleResponse(e) {
   // hide spinner because response received
-  $spinner.classList.toggle('hidden');
+  $spinner.classList.add('hidden');
   data.response = request.response;
   if (data.response) {
     $message.textContent = null;
@@ -287,17 +287,17 @@ function setMessage() {
 
 request.addEventListener('load', e => {
   // hide spinner because response received
-  $spinner.classList.toggle('hidden');
+  $spinner.classList.add('hidden');
   data.response = request.response;
   if (data.response) {
     // handle response
     $message.textContent = null;
     handleResponse();
-    $form.reset();
   } else {
     // show not found message
     setMessage();
   }
+   $form.reset();
 });
 
 function createUrl(type, creature) {
@@ -305,6 +305,7 @@ function createUrl(type, creature) {
   data.type = type;
   const noSpaces = name.replaceAll(' ', '_');
   data.creature = noSpaces.replaceAll("'", '');
+  return `https://acnhapi.com/v1/${data.type}/${data.creature}`;
 }
 
 // api call made here
@@ -322,15 +323,12 @@ function handleFind(e) {
     $resultName.textContent = null;
     // send request
     request.open('GET', endpoint);
+    // show spinner because api call sent
+    $spinner.classList.remove('hidden');
     request.send();
-  } else {
-  // hide spinner
-    $spinner.classList.toggle('hidden');
   }
 }
 
 $form.addEventListener('submit', e => {
-  // show spinner
-  $spinner.classList.toggle('hidden');
   handleFind(e);
 });
