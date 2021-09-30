@@ -39,6 +39,7 @@ function createCatchItem(entry) {
   const $rightCol = document.createElement('div');
   const $check = document.createElement('input');
   $check.setAttribute('type', 'checkbox');
+  $check.className = 'checkbox';
   $check.id = entry.id;
   const $caught = document.createElement('span');
   $caught.className = 'caught-check';

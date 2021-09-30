@@ -118,12 +118,6 @@ header {
   font-size: 18px;
   color: #a0702d;
 }
-/*
-.btn:hover {
-  background-color: #31993f;
-  color: #6ECB63;
-  border-color:#6ECB63;
-} */
 
 .btn:active {
   transform: translateY(0.25rem);
@@ -346,4 +340,10 @@ li {
 .comments {
   font-weight: 600;
   color: #a0702d;
+}
+
+button,
+i,
+.checkbox {
+  cursor: pointer;
 }
