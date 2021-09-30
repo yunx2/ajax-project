@@ -86,3 +86,17 @@ function setCatchList() {
     });
   }
 }
+
+function removeFromCatchList(id) {
+  const copy = data.catchList.slice();
+  let index;
+  for (let i = 0; i < copy.length; i++) {
+    const item = copy[i];
+    if (item.id == id) {
+      index = i;
+      break;
+    }
+  }
+  copy.splice(index, 1);
+  return copy;
+}
