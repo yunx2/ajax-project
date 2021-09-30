@@ -5,6 +5,7 @@ main {
 header {
   border-bottom: 2px solid #a0702d;
 }
+
 .green-bg {
   background-color: #b1e693;
 }
@@ -66,13 +67,6 @@ header {
     font-size: 34px;
   }
 }
-
-/* @media screen and (max-width: 400px) {
-  .page-heading-text {
-  font-size: 28px;
-  }
-} */
-
 
 .font-proza {
   font-family: 'Proza Libre', serif;
@@ -185,10 +179,6 @@ select:focus {
 
 .btn-add:active{
   transform: translateY(0.25rem);
-}
-
-.bottom-row {
-  margin: 20px 0;
 }
 
 .img-bells {
@@ -320,4 +310,33 @@ li {
 
 .catch-item {
   padding-top: 20px;
+}
+
+.avail-text {
+  font-size: 26px;;
+}
+
+.hemisphere {
+  font-size: 20px;
+}
+
+.result-name {
+  font-size: 40px;
+  margin-left: 15px;
+}
+
+.result-add {
+  height: 40px;
+  width: 40px;
+  font-size: 16px;
+}
+
+.result-heading {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.result-view {
+  padding: 50px 100px;
 }

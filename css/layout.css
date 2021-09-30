@@ -36,3 +36,10 @@
     /* flex-basis: 50%; */
   }
 }
+
+
+/* @media screen and (min-width: 768px)  {
+  .result-title {
+    justify-content: center;
+  }
+} */
