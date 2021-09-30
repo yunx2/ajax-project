@@ -20,14 +20,23 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
   if (e.target.tagName === 'I' || e.target.tagName === 'BUTTON') {
     const $closest = e.target.closest('li');
     const itemId = $closest.getAttribute('data-id');
-    data.editing = data.catchList.find(item => item.id == itemId);
-    // determine if editing comment or adding comment
-    if (data.editing.comment) {
-      $comment.value = data.editing.comment;
+    const creature = data.catchList.find(item => item.id == itemId);
+    if (e.target.className === 'list-item-title') {
+      // switch to detail view
+      changeView('details');
     } else {
-      $comment.value = null;
+      // do comment things
+      data.editing = creature;
+      // determine if editing comment or adding comment
+      if (data.editing.comment) {
+        $comment.value = data.editing.comment;
+      } else {
+        $comment.value = null;
+      }
+      $editModal.showModal();
     }
-    $editModal.showModal();
+
+
   }
 });
 
@@ -297,7 +306,7 @@ request.addEventListener('load', e => {
     // show not found message
     setMessage();
   }
-   $form.reset();
+  $form.reset();
 });
 
 function createUrl(type, creature) {
