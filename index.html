@@ -44,23 +44,21 @@
     <div class="row justify-center" data-view="find" id="find-view">
       <div class="column-full flex justify-center">
         <form id="form" class="search-form">
-
-          <div class="select-type column-full flex">
+          <div class="select-type column-full">
             <div class="row select-container">
-              <label class="label-select" for="select-creature">Select Creature Type</label>
-              <select name="select" id="select-creature">
+              <label class="label-select select-spacing" for="select-creature">Select Creature Type</label>
+              <select name="select" id="select-creature" class="select-spacing">
                 <option value="fish">Fish</option>
                 <option value="bugs">Bug</option>
                 <option value="sea">Sea Creature</option>
               </select>
             </div>
-
+            <img src="images/NookPhone_Critterpedia_NH_Icon.png" alt="creature-types" id="critterpedia">
           </div>
-
-          <div>
+          <div class="column-full">
             <input name="text-input" class="find-input beige-bg" type="text" placeholder="Enter creature name">
           </div>
-          <div><button id="find" class="btn" type="submit">Find</button>
+          <div class="column-full"><button id="find" class="btn" type="submit">Find</button>
           </div>
         </form>
       </div>
