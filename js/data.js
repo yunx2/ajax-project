@@ -1,6 +1,3 @@
-// first script tag links to this
-// load data object into memory
-
 /* exported data */
 let data = {
   view: 'find',
