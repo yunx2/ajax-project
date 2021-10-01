@@ -78,7 +78,6 @@ header {
 }
 
 .navigation {
-
   justify-content: center;
 }
 
@@ -102,7 +101,7 @@ header {
 
 .search-form {
   width: 80%;
-  margin-top: 50px;
+  margin-top: 30px;
   max-width: 650px;
 }
 

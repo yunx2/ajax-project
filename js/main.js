@@ -14,6 +14,19 @@ const $editModal = document.getElementById('edit-view');
 const $confirmModal = document.getElementById('confirm-view');
 const $confirmButtons = document.getElementById('confirm-buttons'); // contains 'confirm' and 'cancel' buttons on delete modal
 
+const $nav = document.querySelector('.navigation');
+$nav.addEventListener('click', e => {
+  if (e.target.id === 'home') {
+    changeView('find');
+  }
+  if (e.target.id === 'catch') {
+    changeView('list');
+  }
+  if (e.target.id === 'help') {
+    console.log('change to help view')
+  }
+});
+
 document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
