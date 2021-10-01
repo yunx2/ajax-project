@@ -87,6 +87,12 @@ main {
   font-size: 44px;
 }
 
+/* @media screen and (max-width: 768px) {
+  .page-heading-text {
+    margin-top: 0;
+  }
+} */
+
 @media screen and (max-width: 600px) {
   .page-heading-text {
     font-size: 34px;
@@ -142,12 +148,18 @@ main {
 }
 
  #critterpedia {
-    height: 50px;
+    height: 80px;
     margin-left: 10px;
  }
 
+ /* @media screen and (min-width: 768px) {
+  .critterpedia {
+    height: 65px;
+  }
+} */
+
  .select-spacing {
-   margin: 20px;
+   margin-right: 20px;
  }
 
 .select-container {
