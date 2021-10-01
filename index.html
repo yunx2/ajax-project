@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Proza+Libre:wght@400;600&display=swap" rel="stylesheet">
-  <title>AJAX Project</title>
+  <title>Animal Crossing Creatures</title>
   <link rel="icon" href="images/bells.png">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -44,18 +44,19 @@
     <div class="row justify-center" data-view="find" id="find-view">
       <div class="column-full flex justify-center">
         <form id="form" class="search-form">
-          <div class="creature-select">
-            <div class="column-half flex select-label">
-               <label for="select-creature" class=""> Select Creature Type</label>
-            </div>
-            <div class="column-half">
+
+          <div class="select-type column-full flex">
+            <div class="row select-container">
+              <label class="label-select" for="select-creature">Select Creature Type</label>
               <select name="select" id="select-creature">
                 <option value="fish">Fish</option>
                 <option value="bugs">Bug</option>
                 <option value="sea">Sea Creature</option>
               </select>
             </div>
+
           </div>
+
           <div>
             <input name="text-input" class="find-input beige-bg" type="text" placeholder="Enter creature name">
           </div>
