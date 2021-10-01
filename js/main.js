@@ -8,11 +8,11 @@ const $detailsAdd = document.getElementById('add-details');
 const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
-const $editButtonsContainer = document.getElementById('edit-buttons');
+const $editButtonsContainer = document.getElementById('edit-buttons'); // contains 'done' and 'cancel' buttons on edit modal
 const $comment = document.querySelector('.comment-text');
 const $editModal = document.getElementById('edit-view');
 const $confirmModal = document.getElementById('confirm-view');
-const $confirmButtons = document.getElementById('confirm-buttons');
+const $confirmButtons = document.getElementById('confirm-buttons'); // contains 'confirm' and 'cancel' buttons on delete modal
 
 document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
@@ -35,7 +35,6 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
     const $closest = e.target.closest('li');
     const itemId = $closest.getAttribute('data-id');
     const creature = data.catchList.find(item => item.id == itemId);
-    // console.log('creature:', creature)
     if (e.target.className === 'list-item-title') {
       // switch to detail view
       data.response = creature.creatureData;
@@ -65,7 +64,6 @@ function handleEdit() {
     const newCatchList = removeFromCatchList(data.editing.id);
     newCatchList.unshift(data.editing);
     data.catchList = newCatchList;
-    // console.log('data.catchList:', newCatchList);
     const $edited = createCatchItem(data.editing);
     // change DOM to reflect changes in data.
     const $original = document.querySelector(`[data-id='${data.editing.id}']`);
