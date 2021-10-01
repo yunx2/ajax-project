@@ -5,7 +5,6 @@ const $resultImg = document.querySelector('.result-image');
 const $details = document.getElementById('details');
 const $resultsAdd = document.getElementById('results-add');
 const $detailsAdd = document.getElementById('add-details');
-const $catchListButton = document.getElementById('btn-catch');
 const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
 const $editButtonsContainer = document.getElementById('edit-buttons'); // contains 'done' and 'cancel' buttons on edit modal
@@ -131,10 +130,6 @@ $catchList.addEventListener('input', e => {
 
 $headingButton.addEventListener('click', () => {
   changeView('find');
-});
-
-$catchListButton.addEventListener('click', () => {
-  changeView('list');
 });
 
 function isAdded() {
