@@ -257,6 +257,7 @@ select:focus {
   color:  #6ECB63;
   background-color: #fbf4e9;
   border: none;
+  font-size: 20px;
 }
 
 .catch-item {
@@ -268,7 +269,7 @@ select:focus {
 
 .comments-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .buttons {
@@ -290,6 +291,7 @@ select:focus {
 .caught-check {
   color:#6ECB63;
   font-family: 'Proza Libre', serif;
+  font-size: 20px;
 }
 
 #btn-catch {

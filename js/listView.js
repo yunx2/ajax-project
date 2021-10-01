@@ -48,14 +48,11 @@ function createCatchItem(entry) {
   $commentsRow.classList.add('column-full');
   $commentsRow.classList.add('comments-row');
   $bottomRow.append($commentsRow);
-  const $comments = document.createElement('span');
-  $comments.textContent = 'Comment:';
-  $comments.className = 'comments';
   const $button = document.createElement('button');
   $button.setAttribute('type', 'button');
   $button.className = 'icon-edit';
   $button.innerHTML = '<i class="fas fa-pen"></i>';
-  $commentsRow.append($comments, $button);
+  $commentsRow.append($button);
   if (entry.comment) {
     const $content = document.createElement('div');
     $content.className = 'column-full';
