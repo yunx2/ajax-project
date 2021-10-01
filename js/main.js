@@ -12,6 +12,7 @@ const $comment = document.querySelector('.comment-text');
 const $editModal = document.getElementById('edit-view');
 const $confirmModal = document.getElementById('confirm-view');
 const $confirmButtons = document.getElementById('confirm-buttons'); // contains 'confirm' and 'cancel' buttons on delete modal
+const $typeImage = document.getElementById('critterpedia');
 
 const $nav = document.querySelector('.navigation');
 $nav.addEventListener('click', e => {
@@ -200,6 +201,7 @@ function setMessage() {
   $message.innerHTML = `No information found. Are you sure <span class="text-pink">${data.creature}</span> is a <span class="text-green">${type}</span>?`;
 }
 
+// called when response recieved
 request.addEventListener('load', e => {
   // hide spinner because response received
   $spinner.classList.add('hidden');
@@ -212,6 +214,8 @@ request.addEventListener('load', e => {
     // show not found message
     setMessage();
   }
+  $typeImage.setAttribute('src', 'images/FishButton.png');
+  $typeImage.setAttribute('alt', 'critterpedia');
   $form.reset();
 });
 
@@ -248,7 +252,6 @@ $form.addEventListener('submit', e => {
   handleFind(e);
 });
 
-const $typeImage = document.getElementById('critterpedia');
 const $select = document.getElementById('select-creature')
 $select.addEventListener('input', e => {
   // console.log('select val:', $select.value);

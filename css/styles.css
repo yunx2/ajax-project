@@ -154,21 +154,6 @@ main {
   }
 }
 
-/* @media screen (max-width: 650px) {
-  .label-select {
-    font-size: 18px;
-  }
-} */
-.select-type {
-  display: flex;
-  /* justify-content: space-evenly; */
-  /* border: 1px solid #a0702d; */
-  height: 70px;
-  align-items: center;
-  /* border-radius: 4px; */
-  padding-left: 0;
-}
-
 .col-spacing {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -240,12 +225,12 @@ main {
 select {
   border: 1px solid #a0702d;
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   background-color: #fbf4e9;
   /* color: #a0702d; */
   border-radius: 4px;
   height: 50px;
-  width: 100px;
+  width: 120px;
 }
 
 select:focus {
