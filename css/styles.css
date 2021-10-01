@@ -62,15 +62,16 @@ main {
   font-family: 'Open Sans', sans-serif;
 }
 
-header {
+.page-header {
   border-bottom: 2px solid #a0702d;
   display: flex;
   justify-content: center;
+  background-color: #b1e693;
 }
 
 .heading-container {
   display: flex;
-  padding-left: 0;
+  /* padding-left: 0; */
   max-width: 650px;
   align-items: center;
 }
@@ -166,7 +167,6 @@ header {
 }
 
 .find-input::placeholder {
-  /* color: #a0702d; */
   font-family: 'Proza Libre';
 }
 
