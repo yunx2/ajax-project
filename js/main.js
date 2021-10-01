@@ -247,3 +247,24 @@ function handleFind(e) {
 $form.addEventListener('submit', e => {
   handleFind(e);
 });
+
+const $typeImage = document.getElementById('critterpedia');
+const $select = document.getElementById('select-creature')
+$select.addEventListener('input', e => {
+  // console.log('select val:', $select.value);
+  const val = $select.value;
+    switch (val) {
+      case 'fish':
+        $typeImage.setAttribute('src', 'images/FishButton.png');
+        $typeImage.setAttribute('alt', 'fish');
+        break;
+      case 'bugs':
+        $typeImage.setAttribute('src', 'images/BugButton.png');
+        $typeImage.setAttribute('alt', 'bugs');
+        break;
+      case 'sea':
+        $typeImage.setAttribute('src', 'images/SeaCreatureButton.png');
+        $typeImage.setAttribute('alt', 'sea-creatures');
+        break;
+    }
+});
