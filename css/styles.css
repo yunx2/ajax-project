@@ -144,7 +144,6 @@ main {
 
 .label-select {
   font-size: 22px;
-  /* font-weight: 600; */
 }
 
 @media screen (max-width: 768px) {
@@ -162,10 +161,6 @@ main {
     height: 80px;
     margin-left: 10px;
  }
-
- /* .select-spacing {
-   margin-right: 20px;
- } */
 
 .select-container {
   display: flex;
@@ -438,10 +433,10 @@ i,
   margin-right: 15px;
 }
 
-.about-view {
+.about-content {
   flex-direction: column;
   /* align-items: center; */
-  width: 650px;
+  max-width: 650px;
   margin-top: 40px;
 }
 
@@ -453,6 +448,7 @@ i,
 
 .suggested-heading {
   font-size: 20px;
+  font-family: 'Proza Libre';
   margin-bottom: 20px;
 }
 
