@@ -13,6 +13,8 @@ const $editModal = document.getElementById('edit-view');
 const $confirmModal = document.getElementById('confirm-view');
 const $confirmButtons = document.getElementById('confirm-buttons'); // contains 'confirm' and 'cancel' buttons on delete modal
 const $typeImage = document.getElementById('critterpedia');
+const $selectControl =  document.getElementById('select-creature');
+const $textControl = document.querySelector('.find-input');
 
 const $nav = document.querySelector('.navigation');
 $nav.addEventListener('click', e => {
@@ -23,7 +25,6 @@ $nav.addEventListener('click', e => {
     changeView('list');
   }
   if (e.target.id === 'about') {
-    // console.log('change to help view')
     changeView('about');
   }
 });
@@ -160,7 +161,6 @@ function handleAdd() {
   data.nextId++;
   data.catchList.unshift(catchItem);
   changeView('list');
-// console.log('data.catchList:', data.catchList);
 }
 
 $resultsAdd.addEventListener('click', handleAdd);
@@ -232,8 +232,6 @@ function createUrl(type, creature) {
 function handleFind(e) {
   e.preventDefault();
   $message.innerHTML = '';
-  const $selectControl = e.target.elements.select;
-  const $textControl = e.target.elements['text-input'];
   const textInput = $textControl.value.trim();
   if (textInput) {
     const endpoint = createUrl($selectControl.value, textInput);
@@ -253,9 +251,8 @@ $form.addEventListener('submit', e => {
   handleFind(e);
 });
 
-const $select = document.getElementById('select-creature')
-$select.addEventListener('input', e => {
-  const val = $select.value;
+$selectControl.addEventListener('input', e => {
+  const val = $selectControl.value;
     switch (val) {
       case 'fish':
         $typeImage.setAttribute('src', 'images/FishButton.png');
