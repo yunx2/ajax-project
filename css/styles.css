@@ -130,7 +130,6 @@ main {
 .nav-button {
   border: none;
   font-size: 18px;
-  font-weight: 600;
 }
 
 .nav-button:hover {
@@ -434,12 +433,12 @@ i,
   cursor: pointer;
 }
 
-.start-img {
+.about-img {
   height: 40px;
   margin-right: 15px;
 }
 
-.help-view {
+.about-view {
   flex-direction: column;
   /* align-items: center; */
   width: 650px;
@@ -458,5 +457,7 @@ i,
 }
 
 .description {
-
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }

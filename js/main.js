@@ -22,8 +22,9 @@ $nav.addEventListener('click', e => {
   if (e.target.id === 'catch') {
     changeView('list');
   }
-  if (e.target.id === 'help') {
-    console.log('change to help view')
+  if (e.target.id === 'about') {
+    // console.log('change to help view')
+    changeView('about');
   }
 });
 
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
     data = JSON.parse(dataJSON);
-    changeView('help');
+    changeView('about');
   }
 });
 
@@ -254,7 +255,6 @@ $form.addEventListener('submit', e => {
 
 const $select = document.getElementById('select-creature')
 $select.addEventListener('input', e => {
-  // console.log('select val:', $select.value);
   const val = $select.value;
     switch (val) {
       case 'fish':
