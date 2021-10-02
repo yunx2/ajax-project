@@ -464,3 +464,23 @@ i,
     margin-bottom: 30px;
   }
 }
+
+.about-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.about-type {
+  margin: 10px 0;
+}
+
+.about-item {
+  border: none;
+  background-color: #fbf4e9;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.about-item:hover {
+ color: #6ECB63;
+}

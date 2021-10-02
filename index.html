@@ -138,18 +138,35 @@
           </span>!
         </h1>
         <div class="suggested-heading">Suggested searches</div>
-        <div class="row search-types">
-          <img src="images/FishButton.png" alt="fish" class="about-img">
-          <span><button type="button" id="barreleye">Barreleye</button>, Oarfish, Ribbon Eel</span>
-        </div>
-        <div class="row search-types">
-          <img src="images/BugButton.png" alt="bug" class="about-img">
-          <span>Giant Stag, Ladybug, Honeybee</span>
-        </div>
-        <div class="row search-types">
-          <img src="images/SeaCreatureButton.png" alt="sea-creature" class="about-img">
-          <span>Octopus, Lobster, Sea Pineapple</span>
-        </div>
+        <ul class="about-list">
+          <li class="about-type">
+            <div class="row search-types">
+              <img src="images/FishButton.png" alt="fish" class="about-img">
+              <button type="button" class="about-item" data-type="fish" id="Barreleye">Barreleye</button>
+              <button type="button" class="about-item" data-type="fish" id="Oarfish">Oarfish</button>
+              <button type="button"class="about-item" data-type="fish" id="Ribbon Eel">Ribbon Eel</button>
+            </div>
+          </li>
+
+          <li class="about-type">
+            <div class="row search-types">
+              <img src="images/BugButton.png" alt="bugs" class="about-img">
+              <button type="button" class="about-item" data-type="bugs" id="Giant stag">Giant Stag</button>
+              <button type="button" class="about-item" data-type="bugs" id="Ladybug">Ladybug</button>
+              <button type="button" class="about-item" data-type="bugs" id="Honeybee">Honeybee</button>
+            </div>
+          </li>
+
+          <li class="about-type">
+            <div class="row search-types">
+              <img src="images/SeaCreatureButton.png" alt="sea-creature" class="about-img">
+              <button type="button" class="about-item" data-type="sea" id="Octopus">Octopus</button>
+              <button type="button" class="about-item" data-type="sea" id="Lobster">Lobster</button>
+              <button type="button" class="about-item" data-type="sea" id="Sea Pineapple">Sea Pineapple</button>
+            </div>
+          </li>
+
+        </ul>
       </div>
     </div>
     <!-- list view -->
@@ -240,6 +257,6 @@
   <script src="js/resultView.js"></script>
   <script src="js/viewChanging.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/aboutButtons.js"></script>
+  <script src="js/aboutView.js"></script>
 </body>
 </html>
