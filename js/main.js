@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', e => {
   const dataJSON = localStorage.getItem('dataJSON');
   if (dataJSON) {
     data = JSON.parse(dataJSON);
-    changeView('about');
+    changeView('find');
   }
 });
 
@@ -251,9 +251,8 @@ $form.addEventListener('submit', e => {
   handleFind(e);
 });
 
-$selectControl.addEventListener('input', e => {
-  const val = $selectControl.value;
-    switch (val) {
+function setIcon(type) {
+  switch (type) {
       case 'fish':
         $typeImage.setAttribute('src', 'images/FishButton.png');
         $typeImage.setAttribute('alt', 'fish');
@@ -267,4 +266,9 @@ $selectControl.addEventListener('input', e => {
         $typeImage.setAttribute('alt', 'sea-creatures');
         break;
     }
+}
+
+$selectControl.addEventListener('input', e => {
+  const type = $selectControl.value;
+  setIcon(type);
 });
