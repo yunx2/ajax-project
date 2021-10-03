@@ -1,4 +1,3 @@
-const $form = document.getElementById('form');
 const $message = document.getElementById('message');
 const $resultName = document.getElementById('result-name');
 const $resultImg = document.querySelector('.result-image');
