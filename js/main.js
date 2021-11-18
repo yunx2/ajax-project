@@ -6,11 +6,11 @@ const $resultsAdd = document.getElementById('results-add');
 const $detailsAdd = document.getElementById('add-details');
 const $headingButton = document.getElementById('btn-heading');
 const $notifications = document.getElementById('notifications');
-const $editButtonsContainer = document.getElementById('edit-buttons'); // contains 'done' and 'cancel' buttons on edit modal
+const $editButtonsContainer = document.getElementById('edit-buttons');
 const $comment = document.querySelector('.comment-text');
 const $editModal = document.getElementById('edit-view');
 const $confirmModal = document.getElementById('confirm-view');
-const $confirmButtons = document.getElementById('confirm-buttons'); // contains 'confirm' and 'cancel' buttons on delete modal
+const $confirmButtons = document.getElementById('confirm-buttons');
 const $typeImage = document.getElementById('critterpedia');
 const $selectControl =  document.getElementById('select-creature');
 const $textControl = document.querySelector('.find-input');
@@ -55,10 +55,7 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
       data.displayName = creature.creatureName;
       changeView('details');
     } else {
-      // do comment things
       data.editing = creature;
-      // determine if editing comment or adding comment
-      // check if there is already a comment
       if (data.editing.comment) {
         $comment.value = data.editing.comment;
       } else {
@@ -70,16 +67,12 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
 });
 
 function handleEdit() {
-  // only do edit things if the comment has been changed
   if (data.editing.comment !== $comment.value) {
-    // set new comment value
     data.editing.comment = $comment.value;
-    // find and remove from catchList
     const newCatchList = removeFromCatchList(data.editing.id);
     newCatchList.unshift(data.editing);
     data.catchList = newCatchList;
     const $edited = createCatchItem(data.editing);
-    // change DOM to reflect changes in data.
     const $original = document.querySelector(`[data-id='${data.editing.id}']`);
     $original.remove();
     $catchList.prepend($edited);
@@ -88,32 +81,26 @@ function handleEdit() {
 }
 
 $editButtonsContainer.addEventListener('click', e => {
-  // only respond to button clicks
   if (e.target.tagName !== 'BUTTON') {
     return;
   }
-  // do edit things
   if (e.target.id === 'btn-done') {
     handleEdit();
   }
-  // close modal
   $editModal.close();
   $catchList.scrollIntoView();
 });
 
 function handleCheck({ target }) {
   if (target.tagName !== 'BUTTON') {
-    // ignore anything that's not a button
     return;
   }
   const $toDelete = data.editing;
   const id = $toDelete.getAttribute('data-id');
   if (target.id === 'confirm-delete') {
-    // do delete things
     $toDelete.remove();
     data.catchList = data.catchList.filter(item => item.id != id);
   } else {
-    // uncheck checkbox
     document.getElementById(id).checked = false;
   }
   data.editing = null;
@@ -145,7 +132,6 @@ function showNotification(message) {
 }
 
 function handleAdd() {
-  // if creature already in catchList return
   if (isAdded()) {
     const msg = `${data.displayName} already added`;
     showNotification(msg);
@@ -176,12 +162,10 @@ const request = new XMLHttpRequest();
 request.responseType = 'json';
 
 function handleResponse(e) {
-  // hide spinner because response received
   $spinner.classList.add('hidden');
   data.response = request.response;
   if (data.response) {
     $message.textContent = null;
-    // set and change to result view
     setResultView();
     changeView('result');
   }
@@ -234,13 +218,10 @@ function handleFind(e) {
   const textInput = $textControl.value.trim();
   if (textInput) {
     const endpoint = createUrl($selectControl.value, textInput);
-    // remove previous results from results view
     $resultImg.setAttribute('src', null);
     $resultImg.setAttribute('alt', null);
     $resultName.textContent = null;
-    // send request
     request.open('GET', endpoint);
-    // show spinner because api call sent
     $spinner.classList.remove('hidden');
     request.send();
   }

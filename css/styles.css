@@ -167,8 +167,6 @@ main {
   align-items: baseline;
   margin-left: 0;
   justify-content: center;
-  /* margin-top: 20px;
-  margin-bottom: 20px; */
 }
 
 .find-input {
@@ -209,7 +207,6 @@ main {
   width: 80px;
 }
 
-
 .btn-heading {
    background-color: #b1e693;
    border: none;
@@ -221,7 +218,6 @@ select {
   text-align: center;
   font-size: 16px;
   background-color: #fbf4e9;
-  /* color: #a0702d; */
   border-radius: 4px;
   height: 50px;
   width: 120px;
@@ -424,6 +420,7 @@ select:focus {
 
 button,
 i,
+select,
 .checkbox {
   cursor: pointer;
 }

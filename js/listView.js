@@ -62,21 +62,16 @@ function createCatchItem(entry) {
 }
 
 function setCatchList() {
-  // remove any items that are already set
   $catchList.innerHTML = '';
   if (data.catchList.length === 0) {
-    // create $message element and append to $catchlist
     const $message = document.createElement('p');
     $message.textContent = 'There\'s nothing here yet...';
     $message.id = 'message-list';
     $catchList.append($message);
   } else {
-    // remove any items that are already set
     $catchList.innerHTML = '';
-    // set items again from catchlist
     data.catchList.forEach(current => {
       const $item = createCatchItem(current);
-      // console.log($item)
       $catchList.append($item);
     });
   }
