@@ -20,10 +20,8 @@ function createCatchItem(entry) {
   $midCol.classList.add('col-mid');
 
   const $btn = document.createElement('button');
-  // const $name = document.createElement('p');
   $btn.textContent = entry.creatureName;
   $btn.classList.add('list-item-title');
-  // $btn.append($name);
   $midCol.append($btn);
 
   const $rightCol = document.createElement('div');

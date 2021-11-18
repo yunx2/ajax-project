@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 650px) {
   .column-third {
     width: calc(100% / 3);
   }
