@@ -22,8 +22,8 @@ Use Critterpedia to search for a Critter's availbility information, save Critter
 - User can search for a fish, bug, or sea creature by name.
 - User can view availability data for the fish, bug, or sea creature (ie. Is it available to catch now?)
 - User can save a searched Critter and its information to a 'To-Catch List'.
-- User can add notes to items saved to the catch list.
-- Users can remove item from the 'To-Catch List'.
+- User can add notes to an item saved to the 'To-Catch List'.
+- Users can remove an item from the 'To-Catch List'.
 
 ## Preview
 
