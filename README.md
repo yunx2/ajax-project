@@ -5,7 +5,7 @@ Different creatures appear depending on the time of year and day as well as in-g
 
 ## Live Site
 
-Check out Critterpedia [here](https://yunyunliu.github.io/Critterpedia/)!
+Check out Critterpedia [here](https://yunyunliu.github.io/critterpedia/)!
 
 Use Critterpedia to search for a Critter's availbility information, save Critters you plan on catching to your To-Catch list, and keep track of your Critter-catching progress with notes.
 
