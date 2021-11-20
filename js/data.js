@@ -9,4 +9,4 @@ let data = {
   nextId: 1,
   editing: null
 };
-const $catchList = document.getElementById('catch-entries'); // the ul element that list items get appended to
+const $catchList = document.getElementById('catch-entries');

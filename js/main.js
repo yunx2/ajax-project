@@ -50,7 +50,6 @@ $catchList.addEventListener('click', e => { // prepopulate text area if comment 
     const itemId = $closest.getAttribute('data-id');
     const creature = data.catchList.find(item => item.id == itemId);
     if (e.target.className === 'list-item-title') {
-      // switch to detail view
       data.response = creature.creatureData;
       data.displayName = creature.creatureName;
       changeView('details');
@@ -191,11 +190,9 @@ request.addEventListener('load', e => {
   $spinner.classList.add('hidden');
   data.response = request.response;
   if (data.response) {
-    // handle response
     $message.textContent = null;
     handleResponse();
   } else {
-    // show not found message
     setMessage();
   }
   $typeImage.setAttribute('src', 'images/FishButton.png');
